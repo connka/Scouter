@@ -1,5 +1,4 @@
 const rp = require('request-promise');
-const etsAesoUrl = 'http://ets.aeso.ca/ets_web/ip/Market/Reports/CSDReportServlet';
 const scrapeHelper = require('./helpers/scrapeHelper.js');
 const fs = require('fs');
 /**
@@ -16,9 +15,10 @@ function liveDataSummaryToJSON(scrapeUrl) {
          * @return {string} a string
          */
         function testHtml(html) {
+          const timeStamp = {'timeStamp': Date.now()};
           const titleObj = scrapeHelper.getTitle(html);
           const assetObj = scrapeHelper.getAssetTables(html);
-          const mergObj = {...titleObj, ...assetObj};
+          const mergObj = {...timeStamp, ...titleObj, ...assetObj};
           return mergObj;
         }
         const data = testHtml(html);
