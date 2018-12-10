@@ -13,6 +13,9 @@ const getDataFromScraper = async () => {
   return result;
 };
 
+function insertToDb(data, db) {
+  db.collection('test').insertOne({data});
+}
 
 console.log(process.env.MONGODB_URI);
 console.log(process.env.MONGODB_DBNAME);
@@ -21,24 +24,22 @@ const url = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DBNAME;
 
 
-(async function() {
+module.exports.passToServer = async () => {
   let client;
-
+  let out = {}
   try {
     client = await MongoClient.connect(url);
     console.log('Connected correctly to server');
-    function insertToDb(data) {
-      db.collection('test').insertOne({data});
-    }
     const db = client.db(dbName);
-    await getDataFromScraper().then(function(x) {
-      console.log('fired');
-      insertToDb(x);
+    out = await getDataFromScraper().then(function(x) {
+      // console.log(x);
+      // insertToDb(x, db);
+      return x;
     });
   } catch (err) {
     console.log(err.stack);
   }
-
   // Close connection
   client.close();
-})();
+  return out
+};
