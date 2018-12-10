@@ -15,7 +15,7 @@ function liveDataSummaryToJSON(scrapeUrl) {
          * @return {string} a string
          */
         function testHtml(html) {
-          const timeStamp = {'timeStamp': Date.now()};
+          const timeStamp = {'TIMESTAMP': Date.now()};
           const titleObj = scrapeHelper.getTitle(html);
           const assetObj = scrapeHelper.getAssetTables(html);
           const mergObj = {...timeStamp, ...titleObj, ...assetObj};
