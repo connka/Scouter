@@ -1,1 +1,1 @@
-Scooter, the live power app
+Scouter, the live power app
