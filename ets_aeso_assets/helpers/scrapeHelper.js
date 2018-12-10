@@ -17,11 +17,11 @@ module.exports.getAssetTables = function(html) {
   const hydroAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(hydroAssetNode);
   const windAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(windAssetNode);
   const biomassOtherAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(biomassOtherAssetNode);
-  console.log(hydroAssetNodeTitle);
-  console.log(windAssetNodeTitle);
   // Assign table values to output
   outObj[coalAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(coalAssetNode, coalAssetNodeTitle);
-  outObj[hydroAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(hydroAssetNode, hydroAssetNodeTitle)
+  outObj[hydroAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(hydroAssetNode, hydroAssetNodeTitle);
+  outObj[windAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(windAssetNode, windAssetNodeTitle);
+  outObj[biomassOtherAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(biomassOtherAssetNode, biomassOtherAssetNodeTitle);
   // Gas needs to be split into simple cycle, cogeneration, combined cycle
   // outObj[gasAssetNodeTitle] = treeIterationHelper.iterateThroughGas(gasAssetNode, gasAssetNodeTitle);
   return outObj;
