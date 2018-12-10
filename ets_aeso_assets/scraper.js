@@ -1,15 +1,6 @@
 const rp = require('request-promise');
 const etsAesoUrl = 'http://ets.aeso.ca/ets_web/ip/Market/Reports/CSDReportServlet';
-const scrapeHelper = require('./scrapeHelper');
-
-const jsonGenerationSkeleton = {
-  'COAL': false,
-  'GAS': false,
-  'HYDRO': false,
-  'OTHER': false,
-  'WIND': false,
-  'TOTAL': false,
-};
+const scrapeHelper = require('./helpers/scrapeHelper.js');
 
 /**
  * Create JSON of summary table from ets AESO live data
@@ -20,7 +11,9 @@ const jsonGenerationSkeleton = {
 function liveDataSummaryToJSON(scrapeUrl) {
   return rp(scrapeUrl)
       .then(function(html) {
-        return scrapeHelper.getTitle(html);
+        // return the title
+        // return scrapeHelper.getTitle(html);
+        return scrapeHelper.getAssetTables(html)
       })
       .catch(function(err) {
         return err;
