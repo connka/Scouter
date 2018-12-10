@@ -1,13 +1,10 @@
-module.exports.assetValueToObjectFormat = function(assetNode, int) {
-  return assetObj = {
-    'ASSET': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(1)`).text(),
-    'MC': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(2)`).text(),
-    'TNG': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(3)`).text(),
-    'DCR': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(4)`).text(),
-  };
-};
-
-function testFunc(assetNode, int) {
+/**
+ * Takes asset number and row and returns structured object
+ * @param {string} assetNode
+ * @param {number} int
+ * @return {object}
+ */
+function createPowerAssetObjectFromRows(assetNode, int) {
   return assetObj = {
     'ASSET': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(1)`).text(),
     'MC': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(2)`).text(),
@@ -20,7 +17,7 @@ module.exports.iterateThroughFirstTwoHundred = function(assetNode, assetNodeTitl
   outArr = [];
   for (let i = 0; i < 200; i++) {
     if ($(`${assetNode}> tr:nth-child(${3 + i}) > td:nth-child(1)`).text()) {
-      const assetObj = testFunc(assetNode, i);
+      const assetObj = createPowerAssetObjectFromRows(assetNode, i);
       outArr.push(assetObj);
     } else {
       return outArr;
@@ -30,7 +27,7 @@ module.exports.iterateThroughFirstTwoHundred = function(assetNode, assetNodeTitl
 };
 
 module.exports.iterateThroughGas = function(assetNode, assetNodeTitle) {
-  let outArr = [];
+  const outArr = [];
   let innerArr = [];
   let currentNode;
   for (let i = 0; i < 200; i++) {
@@ -43,16 +40,17 @@ module.exports.iterateThroughGas = function(assetNode, assetNodeTitle) {
       targetnode === 'Combined Cycle'
     ) {
       if (innerArr[0]) {
-        outArr.push({[currentNode]: innerArr})
+        outArr.push({[currentNode]: innerArr});
       }
       currentNode = targetnode;
-      innerArr = []
+      innerArr = [];
     } else if (targetnode) {
-      innerArr.push(testFunc(assetNode, i - 1));
+      innerArr.push(createPowerAssetObjectFromRows(assetNode, i - 1));
     } else {
-      outArr.push({[currentNode]: innerArr})
+      outArr.push({[currentNode]: innerArr});
       break;
       ;
     }
   };
+  return outArr;
 };
