@@ -29,12 +29,17 @@ function liveDataSummaryToJSON(scrapeUrl) {
         return err;
       });
 }
-module.exports.sendDataToServer = function(etsAesoUrl) {
-  liveDataSummaryToJSON(etsAesoUrl).then(function(data) {
-    fs.writeFile(`./server/data/${data.TIME}.json`, JSON.stringify(data), function(err) {
-      if (err) throw err;
-      console.log('complete');
-    }
-    );
+module.exports.sendDataToServer = function(etsAesoUrl, saveBool) {
+  if (saveBool === true) {
+    liveDataSummaryToJSON(etsAesoUrl).then(function(data) {
+      fs.writeFile(`./server/data/${data.TIME}.json`, JSON.stringify(data), function(err) {
+        if (err) throw err;
+        console.log('complete');
+      }
+      );
+    });
+  }
+  return liveDataSummaryToJSON(etsAesoUrl).then(function(data) {
+    return data;
   });
-}
+};
