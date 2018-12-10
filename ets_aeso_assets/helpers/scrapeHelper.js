@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 const treeNodeIdentifierHelper = require('./traversalHelpers/treeNodeIdentifierHelper');
-
+const treeIterationHelper = require('./traversalHelpers/treeIterationHelper');
 module.exports.getAssetTables = function(html) {
   const outObj = {};
   $ = cheerio.load(html);
@@ -8,24 +8,22 @@ module.exports.getAssetTables = function(html) {
   const primaryParentNodes = treeNodeIdentifierHelper.primaryParentNodesToObject();
   const coalAssetNode = primaryParentNodes.coalAssetNode;
   const gasAssetNode = primaryParentNodes.gasAssetNode;
+  const hydroAssetNode = primaryParentNodes.hydroAssetNode;
+  const windAssetNode = primaryParentNodes.windAssetNode;
+  const biomassOtherAssetNode = primaryParentNodes.biomassOtherAssetNode;
   // Title Nodes
-  const coalAssetNodeTitle = treeNodeIdentifierHelper.primaryParentNodesTitles(coalAssetNode);
-  const gasAssetNodeTitle = treeNodeIdentifierHelper.primaryParentNodesTitles(gasAssetNode);
-  console.log(gasAssetNodeTitle)
-  outObj[coalAssetNodeTitle] = [];
-  for (let i = 0; i < 200; i++) {
-    if ($(`${coalAssetNode}> tr:nth-child(${3 + i}) > td:nth-child(1)`).text()) {
-      const assetObj = {
-        'ASSET': $(`${coalAssetNode}> tr:nth-child(${3 + i}) > td:nth-child(1)`).text(),
-        'MC': $(`${coalAssetNode}> tr:nth-child(${3 + i}) > td:nth-child(2)`).text(),
-        'TNG': $(`${coalAssetNode}> tr:nth-child(${3 + i}) > td:nth-child(3)`).text(),
-        'DCR': $(`${coalAssetNode}> tr:nth-child(${3 + i}) > td:nth-child(4)`).text(),
-      };
-      outObj[coalAssetNodeTitle].push(assetObj);
-    } else {
-      break;
-    }
-  }
+  const coalAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(coalAssetNode);
+  const gasAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(gasAssetNode);
+  const hydroAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(hydroAssetNode);
+  const windAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(windAssetNode);
+  const biomassOtherAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(biomassOtherAssetNode);
+  console.log(hydroAssetNodeTitle);
+  console.log(windAssetNodeTitle);
+  // Assign table values to output
+  outObj[coalAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(coalAssetNode, coalAssetNodeTitle);
+  outObj[hydroAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(hydroAssetNode, hydroAssetNodeTitle)
+  // Gas needs to be split into simple cycle, cogeneration, combined cycle
+  // outObj[gasAssetNodeTitle] = treeIterationHelper.iterateThroughGas(gasAssetNode, gasAssetNodeTitle);
   return outObj;
 };
 
