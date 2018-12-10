@@ -30,14 +30,29 @@ module.exports.iterateThroughFirstTwoHundred = function(assetNode, assetNodeTitl
 };
 
 module.exports.iterateThroughGas = function(assetNode, assetNodeTitle) {
-  outArr = [];
+  let outArr = [];
+  let innerArr = [];
+  let currentNode;
   for (let i = 0; i < 200; i++) {
-    if ($(`${assetNode}> tr:nth-child(${2 + i}) > td:nth-child(1)`).text()) {
-      const assetObj = testFunc(assetNode, i);
-      outArr.push(assetObj);
+    const targetnode = $(`${assetNode}> tr:nth-child(${2 + i}) > td:nth-child(1)`).text();
+    if (targetnode === 'ASSET') {
+      ;
+    } else if (
+      targetnode === 'Simple Cycle' ||
+      targetnode === 'Cogeneration' ||
+      targetnode === 'Combined Cycle'
+    ) {
+      if (innerArr[0]) {
+        outArr.push({[currentNode]: innerArr})
+      }
+      currentNode = targetnode;
+      innerArr = []
+    } else if (targetnode) {
+      innerArr.push(testFunc(assetNode, i - 1));
     } else {
-      return outArr;
+      outArr.push({[currentNode]: innerArr})
+      break;
+      ;
     }
-  }
-  return outArr;
+  };
 };

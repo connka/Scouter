@@ -6,24 +6,28 @@ module.exports.getAssetTables = function(html) {
   $ = cheerio.load(html);
   // Tree traversal nodes for html
   const primaryParentNodes = treeNodeIdentifierHelper.primaryParentNodesToObject();
-  const coalAssetNode = primaryParentNodes.coalAssetNode;
   const gasAssetNode = primaryParentNodes.gasAssetNode;
-  const hydroAssetNode = primaryParentNodes.hydroAssetNode;
-  const windAssetNode = primaryParentNodes.windAssetNode;
-  const biomassOtherAssetNode = primaryParentNodes.biomassOtherAssetNode;
+  // const coalAssetNode = primaryParentNodes.coalAssetNode;
+  // const hydroAssetNode = primaryParentNodes.hydroAssetNode;
+  // const windAssetNode = primaryParentNodes.windAssetNode;
+  // const biomassOtherAssetNode = primaryParentNodes.biomassOtherAssetNode;
+
   // Title Nodes
-  const coalAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(coalAssetNode);
-  const gasAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(gasAssetNode);
-  const hydroAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(hydroAssetNode);
-  const windAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(windAssetNode);
-  const biomassOtherAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(biomassOtherAssetNode);
+  const gasAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(gasAssetNode);  
+  // const coalAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(coalAssetNode);
+  // const hydroAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(hydroAssetNode);
+  // const windAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(windAssetNode);
+  // const biomassOtherAssetNodeTitle = treeNodeIdentifierHelper.parentNodesTitles(biomassOtherAssetNode);
+
   // Assign table values to output
-  outObj[coalAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(coalAssetNode, coalAssetNodeTitle);
-  outObj[hydroAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(hydroAssetNode, hydroAssetNodeTitle);
-  outObj[windAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(windAssetNode, windAssetNodeTitle);
-  outObj[biomassOtherAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(biomassOtherAssetNode, biomassOtherAssetNodeTitle);
+
+  // outObj[coalAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(coalAssetNode, coalAssetNodeTitle);
+  // outObj[hydroAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(hydroAssetNode, hydroAssetNodeTitle);
+  // outObj[windAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(windAssetNode, windAssetNodeTitle);
+  // outObj[biomassOtherAssetNodeTitle] = treeIterationHelper.iterateThroughFirstTwoHundred(biomassOtherAssetNode, biomassOtherAssetNodeTitle);
+
   // Gas needs to be split into simple cycle, cogeneration, combined cycle
-  // outObj[gasAssetNodeTitle] = treeIterationHelper.iterateThroughGas(gasAssetNode, gasAssetNodeTitle);
+  outObj[gasAssetNodeTitle] = treeIterationHelper.iterateThroughGas(gasAssetNode, gasAssetNodeTitle);
   return outObj;
 };
 
