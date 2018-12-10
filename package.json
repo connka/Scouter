@@ -1,0 +1,30 @@
+{
+  "name": "scouter",
+  "version": "1.0.0",
+  "description": "A live power app for Alberta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buckatech/Scouter.git"
+  },
+  "keywords": [
+    "power",
+    "live",
+    "alberta"
+  ],
+  "author": "Alex, Taylor, Kate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buckatech/Scouter/issues"
+  },
+  "homepage": "https://github.com/buckatech/Scouter#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "puppeteer": "^1.11.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
