@@ -1,3 +1,4 @@
+/* eslint new-cap: ["error", { "capIsNewExceptionPattern": "^express\.." }]*/
 const express = require('express');
 const router = express.Router();
 const indexController = require('./indexController');

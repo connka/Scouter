@@ -1,7 +1,6 @@
 const etsAesoUrl = 'http://ets.aeso.ca/ets_web/ip/Market/Reports/CSDReportServlet';
 const dataScraper = require('../ets_aeso_assets/scraper');
 const MongoClient = require('mongodb').MongoClient;
-// const assert = require('assert');
 require('dotenv').config();
 
 const getDataFromScraper = async () => {
@@ -12,17 +11,17 @@ const getDataFromScraper = async () => {
   );
   return result;
 };
-
+/**
+ * Inserts a single document into the database
+ * @param {object} data Any JSON to be inserted into mongoDB
+ * @param {db} db Connection to the database
+ */
 function insertToDb(data, db) {
   db.collection('test').insertOne({data});
 }
 
-console.log(process.env.MONGODB_URI);
-console.log(process.env.MONGODB_DBNAME);
-
 const url = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DBNAME;
-
 
 module.exports.passToServer = async () => {
   let client;
@@ -31,10 +30,9 @@ module.exports.passToServer = async () => {
     client = await MongoClient.connect(url);
     console.log('Connected correctly to server');
     const db = client.db(dbName);
-    out = await getDataFromScraper().then(function(x) {
-      // console.log(x);
-      insertToDb(x, db);
-      return x;
+    out = await getDataFromScraper().then(function(dataToInput) {
+      insertToDb(dataToInput, db);
+      return dataToInput;
     });
   } catch (err) {
     console.log(err.stack);

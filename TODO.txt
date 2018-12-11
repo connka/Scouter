@@ -1,0 +1,61 @@
+Refactor List
+  1. Readability
+    -controller/
+      *formatHelpers/
+    -ets_aeso_assets/
+      *helpers
+        -traversalHelpers
+    -server/
+      *data/
+      lib/
+    -express_server.js
+  2. Functionality/Solutions
+    -controller/
+      *formatHelpers/
+    -ets_aeso_assets/
+      *helpers
+        -traversalHelpers
+    -server/
+      *data/
+      lib/
+    -express_server.js
+  3. Organization/Dead code
+    -controller/
+      *formatHelpers/
+    -ets_aeso_assets/
+      *helpers
+        -traversalHelpers
+    -server/
+      *data/
+      lib/
+    -express_server.js
+  4. Commenting
+    -controller/
+      *formatHelpers/
+    -ets_aeso_assets/
+      *helpers
+        -traversalHelpers
+    -server/
+      *data/
+      lib/
+    -express_server.js
+  5. Try Catch/Err handling
+    -controller/
+      *formatHelpers/
+    -ets_aeso_assets/
+      *helpers
+        -traversalHelpers
+    -server/
+      *data/
+      lib/
+    -express_server.js
+  6. Testing
+    -controller/
+      *formatHelpers/
+    -ets_aeso_assets/
+      *helpers
+        -traversalHelpers
+    -server/
+      *data/
+      lib/
+    -express_server.js

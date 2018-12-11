@@ -29,7 +29,6 @@ exports.render_graph = async (req, res) => {
     for (let i = 0; i < outTable.children.length; i++) {
       if (outTable.children[i].name === 'GAS') {
         for (let j=0; j < outTable.children[4].children.length; j++) {
-          console.log(outTable.children[4].children[j].name)
           const targetTable = outTable.children[4].children[j].name;
           const currentTable = outData['GAS'][j][targetTable];
           currentTable.forEach((tableEle) => {
