@@ -29,6 +29,7 @@ function liveDataSummaryToJSON(scrapeUrl) {
         return err;
       });
 }
+
 module.exports.sendDataToServer = function(etsAesoUrl, saveBool) {
   if (saveBool === true) {
     liveDataSummaryToJSON(etsAesoUrl).then(function(data) {
