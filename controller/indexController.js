@@ -1,5 +1,6 @@
 const db = require('../server/server');
 const mathHelper = require('./formatHelpers/mathHelper');
+const to = require('../global/helpers').to;
 /**
  * Pulls data from the server, adds a sum to the data object.
  * Then display the data as JSON
@@ -7,12 +8,13 @@ const mathHelper = require('./formatHelpers/mathHelper');
  * @param {object} res response header
  */
 exports.render_homepage = async (req, res) => {
-  await db.passToServer().then(function(data) {
+  [err, dbData] = await to(db.passToServer().then(function(data) {
     const outData = data;
     // Sums all data from JSON and pushes and object of sums into the data object
     outData.MATH = mathHelper.sumArray(data);
     res.json(outData);
-  });
+  }));
+  if (err) throw new Error('Error created at render_homepage', err);
 };
 /**
  * Pulls data from the server, formats for svg (d3) output.
@@ -22,7 +24,7 @@ exports.render_homepage = async (req, res) => {
  */
 exports.render_graph = async (req, res) => {
   // Send the data to server then format for svg
-  await db.passToServer().then(function(data) {
+  [err, dbData] = await to(db.passToServer().then(function(data) {
     const outData = data;
     // The required structrue for svg
     const outTable = {
@@ -66,5 +68,6 @@ exports.render_graph = async (req, res) => {
       }
     };
     res.json(outTable);
-  });
+  }));
+  if (err) throw new Error('Error created at render_graph', err);
 };

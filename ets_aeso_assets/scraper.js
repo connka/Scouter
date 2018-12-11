@@ -46,5 +46,8 @@ module.exports.sendDataToServer = function(etsAesoUrl, saveBool) {
   }
   return liveDataSummaryToJSON(etsAesoUrl).then(function(data) {
     return data;
-  });
+  })
+      .catch(function(err) {
+        return err;
+      });
 };

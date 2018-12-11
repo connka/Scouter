@@ -29,16 +29,6 @@ Refactor List
       *data/
       lib/
     -express_server.js
-  5. Try Catch/Err handling
-    -controller/
-      *formatHelpers/
-    -ets_aeso_assets/
-      *helpers
-        -traversalHelpers
-    -server/
-      *data/
-      lib/
-    -express_server.js
   6. Testing
     -controller/
       *formatHelpers/
