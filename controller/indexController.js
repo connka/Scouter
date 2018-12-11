@@ -35,11 +35,6 @@ exports.render_graph = async (req, res) => {
           currentTable.forEach((tableEle) => {
             outTable.children[4].children[j].children.push({'name': tableEle.ASSET, 'size': parseInt(tableEle.TNG)});
           });
-          //console.log(currentTable)
-          // currentTable.forEach((tableEle) => {
-          //   outTable.children[i].children.push({'name': tableEle.ASSET, 'size': parseInt(tableEle.TNG)});
-          //   console.log(tableEle)
-          // });
         };
       } else if (
         outTable.children[i].name === 'COAL' ||
