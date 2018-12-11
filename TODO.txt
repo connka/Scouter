@@ -32,9 +32,6 @@ Refactor List
   4. Commenting
     -controller/
       *formatHelpers/
-    -ets_aeso_assets/
-      *helpers
-        -traversalHelpers
     -server/
       *data/
       lib/

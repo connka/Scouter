@@ -13,6 +13,13 @@ function createPowerAssetObjectFromRows(assetNode, int) {
   };
 };
 
+/**
+ * Takes the asset node and asset node title and returns an array of
+ * objects containing the information from the targeted table
+ * @param {string} assetNode The Parent node of the target table
+ * @param {string} assetNodeTitle The Title of the target table
+ * @return {array} An array of objects containg the ASSET, MC, TNG and DCR of the target table
+ */
 module.exports.iterateThroughFirstTwoHundred = function(assetNode, assetNodeTitle) {
   outArr = [];
   for (let i = 0; i < 200; i++) {
@@ -26,6 +33,15 @@ module.exports.iterateThroughFirstTwoHundred = function(assetNode, assetNodeTitl
   return outArr;
 };
 
+/**
+ * ** SPECEFIC FOR GAS (NESTED ASSETS) **
+ *
+ * Takes the asset node and asset node title and returns an array of
+ * objects containing the information from the targeted table
+ * @param {string} assetNode The Parent node of the target table
+ * @param {string} assetNodeTitle The Title of the target table
+ * @return {array} An array of objects containg the ASSET, MC, TNG and DCR of the gas table
+ */
 module.exports.iterateThroughGas = function(assetNode, assetNodeTitle) {
   const outArr = [];
   let innerArr = [];

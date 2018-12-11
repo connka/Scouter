@@ -1,6 +1,10 @@
 const cheerio = require('cheerio');
 const treeNodeIdentifierHelper = require('./traversalHelpers/treeNodeIdentifierHelper');
 const treeIterationHelper = require('./traversalHelpers/treeIterationHelper');
+/**
+ * @param {string} html from ets.aeso
+ * @return {object} Data tables for COAL, HYDRO, WIND, BIOMASS AND OTHER, and GAS
+ */
 module.exports.getAssetTables = function(html) {
   const outObj = {};
   $ = cheerio.load(html);
@@ -31,7 +35,12 @@ module.exports.getAssetTables = function(html) {
   return outObj;
 };
 
+/**
+ * @param {string} html from ets.aeso site
+ * @return {object} Summary table from ets.aeso site as json
+ */
 module.exports.getTitle = function(html) {
+  // Static names used to target the Summary table values
   const jsonTitleSkeleton = {
     'Alberta Total Net Generation': false,
     'Net Actual Interchange': false,
@@ -47,11 +56,14 @@ module.exports.getTitle = function(html) {
   const keys = Object.keys(jsonTitleSkeleton);
   const outObj = {};
   $ = cheerio.load(html);
+  // The current time ats.aeso is updated for
   const etsAesoTimeStamp = $(`tr:contains('Legend') tr:nth-of-type(2) td`).text();
   outObj.TIME = etsAesoTimeStamp;
+  // Title of the summary sable
   const etsAesoSummaryTableTitle = $(`td:nth-of-type(1) th center`).text();
   outObj[etsAesoSummaryTableTitle] = [];
   keys.forEach((element) => {
+    // returns each value from the summary table
     const output = $(`td tr:contains(${element}) td:nth-of-type(2)`).text();
     outObj[etsAesoSummaryTableTitle].push({
       'KEY': element,

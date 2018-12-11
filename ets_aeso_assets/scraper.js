@@ -30,7 +30,6 @@ function liveDataSummaryToJSON(scrapeUrl) {
       });
 }
 /**
- * 
  * @param {string} etsAesoUrl ets.Aeso url(scraping target)
  * @param {*} saveBool if true saves a JSON file of the data to server/data
  * @return {object} JSON data
