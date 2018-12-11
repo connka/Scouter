@@ -1,5 +1,10 @@
-module.exports.sumArray = (rowData) => {
-  const rowKeys = Object.keys(rowData);
+/**
+ * Takes in the data object and sum all data before sending to the server
+ * @param {object} dataObject All data from tables
+ * @return {object} return the sum off all data in a 'sum' object
+ */
+module.exports.sumArray = (dataObject) => {
+  const rowKeys = Object.keys(dataObject);
   const currentKeys = rowKeys.slice(3, 9);
   const outObj = {};
   currentKeys.forEach((Keyelement) => {
@@ -9,7 +14,7 @@ module.exports.sumArray = (rowData) => {
       'DCR': 0,
     };
     if (Keyelement !== 'GAS') {
-      rowData[Keyelement].forEach((InnerKeyelement) => {
+      dataObject[Keyelement].forEach((InnerKeyelement) => {
         sumArr.MC += parseInt(InnerKeyelement.MC);
         sumArr.TNG += parseInt(InnerKeyelement.TNG);
         sumArr.DCR += parseInt(InnerKeyelement.DCR);
@@ -17,7 +22,7 @@ module.exports.sumArray = (rowData) => {
       outObj[Keyelement] = sumArr;
     } else if (Keyelement === 'GAS') {
       const gasOutArr = [];
-      rowData[Keyelement].forEach((gasArrayelement) => {
+      dataObject[Keyelement].forEach((gasArrayelement) => {
         const gasSumArr = {
           'MC': 0,
           'TNG': 0,

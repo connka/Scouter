@@ -29,13 +29,6 @@ Refactor List
       *data/
       lib/
     -express_server.js
-  4. Commenting
-    -controller/
-      *formatHelpers/
-    -server/
-      *data/
-      lib/
-    -express_server.js
   5. Try Catch/Err handling
     -controller/
       *formatHelpers/

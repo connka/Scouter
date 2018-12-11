@@ -3,6 +3,9 @@ const dataScraper = require('../ets_aeso_assets/scraper');
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 
+/**
+ * @return {object} pulls the data from ets.aeso and returns as JSON
+ */
 const getDataFromScraper = async () => {
   const result = await (
     dataScraper.sendDataToServer(etsAesoUrl).then(function(data) {
@@ -20,7 +23,9 @@ function insertToDb(data, db) {
   db.collection('test').insertOne({data});
 }
 
+// URL for mongoDB server
 const url = process.env.MONGODB_URI;
+// Name of mongoDB server
 const dbName = process.env.MONGODB_DBNAME;
 
 module.exports.passToServer = async () => {
