@@ -29,7 +29,12 @@ function liveDataSummaryToJSON(scrapeUrl) {
         return err;
       });
 }
-
+/**
+ * 
+ * @param {string} etsAesoUrl ets.Aeso url(scraping target)
+ * @param {*} saveBool if true saves a JSON file of the data to server/data
+ * @return {object} JSON data
+ */
 module.exports.sendDataToServer = function(etsAesoUrl, saveBool) {
   if (saveBool === true) {
     liveDataSummaryToJSON(etsAesoUrl).then(function(data) {
