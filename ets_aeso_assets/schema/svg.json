@@ -1,0 +1,37 @@
+{
+  "time": "time",
+  "summary": [
+    {"summaryKey": "summaryValue"},
+    {"summaryKey": "summaryValue"}
+  ],
+  "COAL": [
+    {"ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR"},
+    {"ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR"}
+  ],
+  "HYDRO": [
+    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
+    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
+  ],
+  "WIND": [
+    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
+    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
+  ],
+  "BIOMASS AND OTHER": [
+    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
+    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
+  ],
+  "GAS": [
+    {"Simple Cycle": [
+      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
+      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
+    ]},
+    {"Cogeneration": [
+      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
+      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
+    ]},
+    {"Combined Cycle": [
+      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
+      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
+    ]}
+  ]
+}
