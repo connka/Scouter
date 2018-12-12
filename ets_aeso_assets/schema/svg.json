@@ -1,37 +1,59 @@
 {
-  "time": "time",
-  "summary": [
-    {"summaryKey": "summaryValue"},
-    {"summaryKey": "summaryValue"}
-  ],
-  "COAL": [
-    {"ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR"},
-    {"ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR"}
-  ],
-  "HYDRO": [
-    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
-    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
-  ],
-  "WIND": [
-    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
-    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
-  ],
-  "BIOMASS AND OTHER": [
-    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
-    { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
-  ],
-  "GAS": [
-    {"Simple Cycle": [
-      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
-      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
-    ]},
-    {"Cogeneration": [
-      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
-      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
-    ]},
-    {"Combined Cycle": [
-      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" },
-      { "ASSET": "ASSET", "MC": "MC", "TNG": "TNG", "DCR": "DCR" }
-    ]}
+  "name": "TABLE",
+  "children": [
+    {
+      "name": "COAL",
+      "children": [
+        { "name": "name", "size": 0 },
+        { "name": "name", "size": 0 }
+      ]
+    },
+    {
+      "name": "HYDRO",
+      "children": [
+        { "name": "name", "size": 0 },
+        { "name": "name", "size": 0 }
+      ]
+    },
+    {
+      "name": "WIND",
+      "children": [
+        { "name": "name", "size": 0 },
+        { "name": "name", "size": 0 }
+      ]
+    },
+    {
+      "name": "BIOMASS AND OTHER",
+      "children": [
+        { "name": "name", "size": 0 },
+        { "name": "name", "size": 0 }
+      ]
+    },
+    {
+      "name": "GAS",
+      "children": [
+        {
+          "name": "Simple Cycle",
+          "children": [
+            { "name": "name", "size": 0 },
+            { "name": "name", "size": 0 }
+          ]
+        },
+        {
+          "name": "Cogeneration",
+          "children": [
+            { "name": "name", "size": 0 },
+            { "name": "name", "size": 0 }
+          ]
+        },
+        {
+          "name": "Combined Cycle",
+          "children": [
+            { "name": "name", "size": 0 },
+            { "name": "name", "size": 0 }
+          ]
+        }
+      ]
+    }
   ]
 }
