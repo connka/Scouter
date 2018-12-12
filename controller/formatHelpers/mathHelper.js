@@ -6,7 +6,7 @@
 module.exports.sumArray = (dataObject) => {
   const rowKeys = Object.keys(dataObject);
   const currentKeys = rowKeys.slice(3, 9);
-  let sumObj = {};
+  const sumObj = {};
   const total = {
     'MC': 0,
     'TNG': 0,
@@ -72,12 +72,13 @@ module.exports.sumArray = (dataObject) => {
     }
   });
   percentObj = percentArray(sumObj, total);
-  let retObj = {sumObj, percentObj};
-  console.log(retObj)
+  const retObj = {sumObj, percentObj};
+  console.log(retObj);
   return {SUMS: retObj};
 };
 /**
- * @param {mathData} mathData takes in data returned from Sum function
+ * @param {object} sumArr takes in data returned from Sum function
+ * @param {object} totalObj The totals for each category
  * @return {object} JSON data including the percentage of sums
  */
 function percentArray(sumArr, totalObj) {
@@ -88,8 +89,8 @@ function percentArray(sumArr, totalObj) {
       outObj[ele] = (sumArr[ele].MC/totalObj.MC).toPrecision(4);
     } else {
       sumArr[ele].forEach((ele) => {
-        let key = Object.keys(ele)[0];
-        let outele = (ele[key].MC/totalObj.MC).toPrecision(4);
+        const key = Object.keys(ele)[0];
+        const outele = (ele[key].MC/totalObj.MC).toPrecision(4);
         obj['GAS'].push({[key]: outele});
       });
     }
