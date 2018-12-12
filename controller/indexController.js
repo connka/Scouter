@@ -14,7 +14,7 @@ exports.render_homepage = async (req, res) => {
     outData.MATH = mathHelper.sumArray(data);
     res.json(outData);
   }));
-  if (err) throw new Error('Error created at render_homepage', err);
+  if (err) throw new Error(err.stack);
 };
 /**
  * Pulls data from the server, formats for svg (d3) output.
@@ -69,5 +69,5 @@ exports.render_graph = async (req, res) => {
     };
     res.json(outTable);
   }));
-  if (err) throw new Error('Error created at render_graph', err);
+  if (err) throw new Error(err);
 };
