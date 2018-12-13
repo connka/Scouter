@@ -1,5 +1,6 @@
 const rp = require('request-promise');
 const scrapeHelper = require('./helpers/scrapeHelper.js');
+const mathHelper = require('./formatHelpers/mathHelper');
 const fs = require('fs');
 /**
  * Create JSON of summary table from ets AESO live data
@@ -45,6 +46,9 @@ module.exports.sendDataToServer = function(etsAesoUrl, saveBool) {
     });
   }
   return liveDataSummaryToJSON(etsAesoUrl).then(function(data) {
+    data.TIMESTAMP = 'hi';
+    // Sums all data from JSON and pushes and object of sums into the data object
+    data.MATH = mathHelper.sumArray(data);
     return data;
   })
       .catch(function(err) {

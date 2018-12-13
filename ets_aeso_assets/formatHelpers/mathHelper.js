@@ -73,7 +73,6 @@ module.exports.sumArray = (dataObject) => {
   });
   percentObj = percentArray(sumObj, total);
   const retObj = {sumObj, percentObj};
-  console.log(retObj);
   return {SUMS: retObj};
 };
 /**
