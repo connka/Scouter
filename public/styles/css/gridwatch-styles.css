@@ -1,0 +1,2093 @@
+@charset "UTF-8";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.2/jquery.mobile.min.css");
+@import "bootstrap.min.css";
+
+/*---------------------------------------------------------------------*/
+/* GLOBAL STYLES
+/*---------------------------------------------------------------------*/
+
+html, body {
+/* 	background-color: #EFF0F2; */
+	background-color: #efeff4;
+	font-family: -apple-system, "BlinkMacSystemFont", "Helvetica Neue", sans-serif;
+	color: #465865; 
+	font-size: 16px;
+    font-weight: 300;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);    
+    /* Prevent native touch events on Windows */
+	-ms-touch-action: none;
+	/* Prevent the callout on tap-hold and text selection */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	/* Prevent text resize on orientation change, useful for web-apps */
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;	
+	/* smoother scrolling on Android */
+	-ms-overflow-style: none !important;
+}
+
+.gridwatch-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-color: rgba(0,0,0,0.3);
+    display: none;
+}
+
+.wrapper {
+	margin-top: 50px;
+	width: 100%;
+}
+
+.wrapper-ios {
+	margin-top: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 100%;
+}
+
+.wrapper-ipad {
+	margin-top: 50px;
+	width: 100%;
+}
+
+.container {
+    max-width: none !important;
+    padding: 0px;
+    width: 100%;
+}
+
+.block {
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width:100%;
+}
+
+table tr td {
+    padding: 5px 8px;
+    line-height: 20px;
+}
+
+.row {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 20px;
+    padding:0px;
+}	
+
+.rotate {
+	display:none;
+}
+
+.page-content {
+	width: 100%;
+	height: 100%;
+	margin-top:50px;
+	padding-bottom: 20px;
+}
+
+.page-content-ios {
+	width: 100%;
+	height: 100%;
+	margin-top:10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
+/*---------------------------------------------------------------------*/
+/* PAGE HEADER
+/*---------------------------------------------------------------------*/
+
+.page-head {
+	position: fixed;
+    text-align:center;
+    font-size:large;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
+	background:rgba(255,255,255,0.97);
+    height: 50px;
+	width: 100%;	
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 998;
+}
+
+.page-head-title {
+    line-height:50px;
+    font-size: 18px;
+    margin: auto;
+    width: 50%;
+}
+
+.page-head-title-center {
+    line-height:50px;
+    font-size: 18px;
+    margin: auto;
+    margin-left: -50px;
+    width: 50%;
+}
+
+.page-head .page-head-elements {
+    display: block;
+    float: left;
+    text-align: center;
+    list-style: none;
+    padding: 0px;
+    border-style:none;
+}
+
+.page-head .page-head-elements > li {
+    display: block;
+    float: left;
+    position: relative;
+    border-style:none;;
+}
+
+.page-head .page-head-elements > li > a {
+    display: block;
+    height: 49px;
+    width: 50px;
+    padding-top: 10px;
+    color: #465865;
+}
+
+.page-head .page-head-elements > li > a:hover {
+    background: #ffffff;
+    text-decoration: none;
+}
+.page-head .page-head-elements > li > a:active {
+    background: #ffffff;
+}
+/*---------------------------------------------------------------------*/
+/* NAVIGATION MENU
+/*---------------------------------------------------------------------*/
+
+.sidr {
+	position:fixed;
+	top:0;
+	z-index:9999;
+	width:250px;
+	height: 100%;
+	left: -250px;
+	overflow: auto;
+	overflow-x: hidden;
+	background-color: #ffffff;
+}
+
+.page-navigation {
+    width: 249px;
+    float: left;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    background-color: #ffffff;
+/*     border-right: 1px solid #c0c0c0; */
+    -webkit-overflow-scrolling: touch;
+}
+
+.page-navigation .navigation {
+    padding: 0px;
+    float: left;
+    width: 100%;
+    margin: 0px;
+    list-style: none;
+/*     border-right: 1px solid #c0c0c0; */
+}
+
+.page-navigation .page-navigation-info {
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 28px 0px 0px;
+    background: #FFFFFF;
+/*     border-right: 1px solid #c0c0c0; */
+    border-bottom: 1px solid #c0c0c0;
+    vertical-align:middle;
+    margin: auto;
+    width: 100%;
+}
+
+.page-navigation .page-navigation-info img {
+	height: 30px;
+	width: 120px;
+	margin-left: 60px;
+}
+
+.page-navigation .navigation .header {
+    padding-left: 10px;
+    float: left;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0px;
+    list-style: none;
+    background-color:#cccccc;
+}
+
+.page-navigation .navigation li {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+
+.img-bruce {
+	width: auto;
+	height: 70px;
+	margin-top: 30px;
+	margin-left: 25px;
+	margin-bottom: 400px;
+}
+
+.page-navigation .navigation > li > a {
+	background-color: #efeff4;
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 10px 10px 10px 15px;
+    font-size: 14px;
+    color: #465865;
+    text-decoration: none;
+    -webkit-transition: background-color 200ms linear;
+    -moz-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+    border-bottom: 1px solid #ffffff;
+}
+
+.page-navigation .navigation > li > a img {
+    width: 30px;
+    height: 30px;
+}
+
+.page-navigation .navigation > li > a:hover {
+    background: #ffffff;
+}
+
+.navigation a.selected {
+    background-color: #ffffff !important;
+}
+
+p.navigation-text {
+    display: inline;
+    line-height: 30px;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: 300;
+
+}
+
+.power-plant-partner-popup-bruce-logo {
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+/*---------------------------------------------------------------------*/
+/* SIDEBAR
+/*---------------------------------------------------------------------*/
+
+.page-sidebar {
+	position:fixed;
+	top:0;
+	z-index:9999;
+	width:250px;
+	height: 100%;
+	right: -250px;
+	overflow: auto;
+	overflow-x: hidden;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: #C0C0C0;
+    height: 100%;
+    background-color: #EFEFF4;
+}
+
+.sidebar-heading {
+    background-color: #FFFFFF;
+    text-transform: none;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    line-height: 30px;
+    padding: 10px;
+}
+
+.sidebar-title {
+    font-size: 11px;
+    color: #000;
+    text-transform: uppercase;
+    float: left;
+    width: 100%;
+    padding: 10px;
+}
+
+.sidebar-block {
+    float: left;
+    width: 100%;
+    padding: 10px;
+}
+
+.energyTypeFilterList {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.energyTypeFilterList li {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin: 0px;
+    position: relative;
+    line-height: 44px;
+}
+
+.filterImage {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.checkboxImage {
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.energyTypeFilterList li div.line {
+    position: absolute;
+    width: 130px;
+    height: 1px;
+    bottom: 0px;
+    right: 0px;
+    border-bottom: 2px solid White;
+}
+/*---------------------------------------------------------------------*/
+/* MOST RECENT HOUR SUMMARY BOXES
+/*---------------------------------------------------------------------*/
+
+.summary-box {
+    margin-top:10px;
+    height: 150px;
+    background-color:#ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.summary-box .title {
+    width: 100%;
+    font-size:16px;
+    color: #465865; 
+    display:table;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.summary-box .title p{
+    display:table-cell;
+    text-align:center;
+}
+
+.summary-box .value {
+    width: 100%;
+    display:table;
+}
+
+.summary-box .value p{
+    text-align:center;
+    font-size: 25px;
+    color: #465865; 
+    padding-top: 18px;
+    display:table-cell;
+}
+
+.summary-box .value-level {
+    width: 100%;
+    font-size:14px;
+    padding-top: 20px;
+    display:table;
+}
+
+.summary-box .value-level p {    
+    text-align:center;
+    display: table-cell;
+}
+
+.summary-box .value-level span {
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.summary-box .levelRange {
+    color:#e8e8e8;
+}
+
+.summary-box .levelActivated {
+    color:#465865;
+}
+
+/*---------------------------------------------------------------------*/
+/* MOST RECENT HOUR TABLES
+/*---------------------------------------------------------------------*/
+
+.breakdown-table-title {
+    font-size: 16px;
+    line-height: 40px;
+    padding: 5px 0px 4px 10px;
+    color:#465865 !important;
+    border-bottom-style: solid;
+    border-bottom-color: #efefef;
+    border-bottom-width: 1px;
+}
+
+.energy-source-breakdown-table tbody tr, .energy-source-breakdown-table thead th {
+    border-bottom:1pt solid #efeff4;
+}
+
+.energy-source-breakdown-table-header {
+    font-size: 16px;
+    line-height: 41px;
+    padding: 5px 0px 4px 10px;
+    margin: 0px;
+}
+
+.energy-source-breakdown-standard-cell {
+    height:66px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+td.energy-source-icon {
+	width: 50px;
+}
+
+
+td.energy-source-icon img {
+	width: 30px;
+}
+
+td.energy-source-title {
+    width:100px;
+    font-size: 18px;
+    color: #465865; 
+}
+
+td.energy-source-values {
+    width:95%;
+}
+
+.td.energy-source-disclosure {
+    width:40px;
+}
+
+.td.energy-source-disclosure img {
+    width: 15px;
+    height: 15px;
+    float: right;
+}
+
+.energy-source-selected td{
+    background-color: #fafafa;
+}
+
+.bar-background {
+    position:relative;
+    width: 100%;
+    top:0px;
+    height: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color:#DBDBDB;
+    z-index:1;
+}
+
+.bar {
+    position:relative;
+    width: 5%; /* this is reset by jQuery */
+    top:0px;
+    height: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color:#f9960f;
+    z-index:2;
+}
+
+.nuclear{
+	color: #FCA647;
+}
+
+.hydro{
+    color: #0FD0F6;
+}
+
+.gas{
+    color: #B95390;
+}
+
+.solar{
+    color: #FFD300;
+}
+
+.wind{
+    color: #1ABC9C;
+}
+
+.biofuel{
+    color: #D45042;
+}
+
+#nuclear{
+    color: #f9960f;
+}
+
+#hydro{
+    color: #31c3eb;
+}
+
+#gas{
+    color: #b376dd;
+}
+
+#solar{
+    color: #e5c73a;
+}
+
+#wind{
+    color: #6fbe44;
+}
+
+#biofuel{
+    color: #CD616D;
+}
+
+
+#nuclear-bar {
+    background-color: #FCA647;
+}
+
+#hydro-bar {
+    background-color: #0FD0F6;
+}
+
+#gas-bar {
+    background-color: #B95390;
+}
+
+#solar-bar {
+    background-color: #FFD300;
+}
+
+#wind-bar {
+    background-color: #1ABC9C;
+}
+
+#biofuel-bar {
+    background-color: #CD616D;
+}
+
+.energy-source-breakdown-import-export-cell {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.imports {
+    color:#465865;
+    float: right;
+}
+
+.exports {
+    color:#465865;
+    float: right;
+}
+
+.netImportExports {
+    float: right;
+}
+
+
+/*---------------------------------------------------------------------*/
+/* MOST RECENT HOUR POWER PLANT TABLE
+/*---------------------------------------------------------------------*/
+
+.power-plant-breakdown-table-header {
+    height: 226px;
+}
+
+.power-plant-breakdown-table-div {
+	-webkit-overflow-scrolling: touch;		
+}
+
+.power-plant-breakdown-summary {
+    background-color:#FCA647;
+    height:132px;
+    color:#ffffff;
+}
+
+.power-plant-breakdown-summary-title {
+    line-height: 50px;
+    padding: 5px 0px 5px 0px;
+    text-align:center;
+    text-transform: lowercase;
+    font-size: 30px;
+/*     font-weight: 100; */
+}
+
+.power-plant-breakdown-summary-bar-background {
+    width: 70%;
+    height: 10px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color:#DBDBDB;
+    z-index:1;
+}
+
+.power-plant-breakdown-summary-bar {
+    position:relative;
+    width: 5%;
+    height: 10px;
+    background-color:#ffffff;
+    z-index:2;
+}
+
+.power-plant-breakdown-summary-values {
+    line-height: 40px;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 16px;
+}
+
+.power-plant-column-header {
+    line-height: 44px;
+    height: 44px;
+    border-bottom-style: solid;
+    border-bottom:1pt solid #efeff4;
+}
+
+.power-plant-breakdown-table tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.power-plant-breakdown-table thead th {
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+/*     font-weight: 100; */
+    padding-left: 10px;
+    text-transform: lowercase;
+}
+
+.power-plant-breakdown-table tbody td{
+    height: 44px;
+    line-height: 44px;
+    border-bottom:1pt solid #efeff4;
+    vertical-align: middle;
+}
+
+td.power-plant-name-data {
+    height: 44px;
+    line-height: 33px; 
+    text-transform: uppercase;
+    width: 50%;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+td.power-plant-name-data a {
+	font-weight: 200;
+}
+
+td.power-plant-output-data {
+    height: 44px;
+    line-height: 33px;
+    width: 25%;
+    font-size: 16px;
+    text-align: center;
+}
+
+td.power-plant-capability-data {
+    height: 44px;
+    line-height: 33px;
+    width: 25%;
+    font-size: 16px;
+    text-align: center;
+}
+
+/*---------------------------------------------------------------------*/
+/* IMPORT EXPORT
+/*---------------------------------------------------------------------*/
+
+/* needed to use the outer div and not the tbody because it breaks in IE */
+.power-plant-breakdown-table-div {
+    height: 307px;
+    overflow: auto;
+}
+
+.import-export-summary {
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 40px;
+}
+
+.import-export-column-titles {
+    line-height: 44px;
+    height: 44px;
+    font-size: 16px;
+    border-top: 1pt solid #efeff4;
+    border-bottom: 1pt solid #efeff4;
+    background-color:#ffffff;
+}
+
+.import-export-table-header-cell{
+    text-align: center;
+    width: 20% !important;
+}
+
+.import-export-table-header-cell-first-column{
+    text-align: left;
+    width: 40% !important;
+}
+
+.import-export-breakdown-table td {
+
+}
+
+/*---------------------------------------------------------------------*/
+/* POWER PLANT MODAL POPUPS
+/*---------------------------------------------------------------------*/
+
+#plant-popup-modal .modal-dialog {
+    height: auto;
+}
+#plant-popup-modal .modal-body {
+    height: auto;
+}
+.modal-title {
+    text-align: left;
+    font-size: 16px;
+    font-weight:100;
+}
+.power-plant-partner-popup-container .row-fluid {
+    padding-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 550px;
+}
+.power-plant-partner-popup-header-text {
+    font-size: 18px;
+    margin-top: 15px;
+}
+ul.power-plant-partner-popup-links {
+    list-style: none;
+    padding: 0px;
+    margin: 10px 0px 20px 0px;
+}
+ul.power-plant-partner-popup-links li {
+    margin: 10px 0px 10px 0px;    
+    font-size: 16px;
+/*     font-weight: 100; */
+}
+.power-plant-partner-popup-link-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+}
+.power-plant-partner-popup-app-icon {
+    width: 72px;
+    height: 72px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 6px;
+}
+
+/*---------------------------------------------------------------------*/
+/* TRENDS
+/*---------------------------------------------------------------------*/
+
+.energyTypeFilterList li {
+    cursor: pointer;    
+}
+
+.block-rotate {
+    width: 100%;
+    height: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container-emissions {
+	width: 100%;
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container-generation {
+	width: 100%;
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chart-header {
+	margin-top:10px;
+    margin-bottom:10px;
+    width: 100%;
+    border-bottom:1pt solid #efeff4;
+}
+
+.chart-title {
+	margin-left: 10px;
+	padding-bottom: 10px;
+    font-size: 16px;
+}
+
+.info-button {
+    position:absolute;
+    right:10px;
+    height: 20px;
+    width: 20px;
+}
+
+#carbon-emissions-chart {
+	width: 95%;
+	height: 240px;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+#generation-by-fuel-type-chart {
+	width: 95%;
+	height: 240px;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+#carbon-emissions-tooltip {
+    position: absolute;
+    display: none;
+    border: 1px solid #aaaaaa;
+    padding: 2px;
+    background-color: #fff;
+    border-radius: 10px;
+    opacity: 0.80;
+    font-size: 16px;
+    z-index: 10;
+    pointer-events: none;
+    box-shadow:3px 3px 6px -4px rgba(0,0,0,0.3),-3px 3px 6px -4px rgba(0,0,0,0.3);
+    width: 260px;
+}
+
+#generation-tooltip {
+    position: absolute;
+    display: none;
+    border: 1px solid #aaaaaa;
+    padding: 2px;
+    background-color: #fff;
+    border-radius: 10px;
+    opacity: 0.80;
+    font-size: 16px;
+    z-index: 10;
+    pointer-events: none;
+    box-shadow:3px 3px 6px -4px rgba(0,0,0,0.3),-3px 3px 6px -4px rgba(0,0,0,0.3);
+    width: 200px;
+}
+
+td.tooltip-value {
+	text-align: right;
+}
+
+/* right side bar */
+
+.sidebar-heading {
+	height: 50px;
+	border-bottom: 1px solid #c0c0c0;
+	font-size: 16px;
+}
+
+.energytype nuclear {
+	font-size: 16px;
+}
+
+.energyTypeFilterList {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.energyTypeFilterList li {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin: 0px;
+    position: relative;
+    line-height: 44px;
+}
+
+.filterImage {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.checkboxImage {
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.energyTypeFilterList li div.line {
+    position: absolute;
+    width: 175px;
+    height: 1px;
+    bottom: 0px;
+    right: 0px;
+    border-bottom: 2px solid White;
+}
+
+.modal-dialog {
+    height: 460px;
+}
+
+.modal-body {
+    height: 416px;
+}
+
+/*---------------------------------------------------------------------*/
+/* GENERATION AND DEMAND
+/*---------------------------------------------------------------------*/
+
+.gridwatch-block {
+    width: 100%;
+    height: 668px;
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+}
+
+.house {
+	margin-top: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.gridwatch-block-header {
+	height: 40px;
+    font-size: 16px;
+	padding: 10px;
+	margin-bottom: 10px;
+    border-bottom:1pt solid #efeff4;
+}
+
+.summary-box-entry-text {
+    text-align:center;
+    font-size: 14px;
+/*     height: 100px; */
+    padding-top:10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.summary-box-date-updated-text {
+    text-align:center;
+    font-size: 20px;
+    height: 60px;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.summary-box-summary-view-generation {
+    height: 210px;
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 40px;
+    padding-top:10px;
+}
+
+.summary-box-summary-view-generation .title {
+    width: 100%;
+    text-align:center;
+    display:table;
+}
+
+.summary-box-summary-view-generation .title p{
+    display:table-cell;
+    text-align:center;
+}
+
+.summary-box-summary-view-generation .value {
+    width: 100%;
+    font-size: 18px;
+/*     font-weight: 100; */
+    text-align:center;
+    display:table;
+}
+
+.summary-box-summary-view-generation .value p{
+    display:table-cell;
+    text-align:center;
+    padding-top: 5px;
+}
+
+.summary-box-summary-view-generation .value-level {
+    width: 100%;
+    text-align:center;
+    font-size:14px;
+    padding-top: 10px;
+    display:table;
+}
+
+.summary-box-summary-view-generation .value-level p{
+    width: 100%;
+    text-align:center;
+    font-size:14px;
+    display: table-cell;
+}
+
+.summary-box-summary-view-generation .levelRange {
+    color: gray;
+}
+
+.summary-box-summary-view-generation .levelActivated {
+    color: #465865;
+}
+
+.summary-box-summary-view-generation .value-level span {
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.summary-box-summary-view-demand {
+    height: 210px;
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 50px;
+    padding-top:10px;
+}
+
+.summary-box-summary-view-demand .title {
+    width: 100%;
+    text-align:center;
+    display:table;
+}
+
+.summary-box-summary-view-demand .title p{
+    display:table-cell;
+    text-align:center;
+}
+
+.summary-box-summary-view-demand .value {
+    width: 100%;
+    font-size: 18px;
+/*     font-weight: 100; */
+    text-align:center;
+    display:table;
+}
+
+.summary-box-summary-view-demand .value p{
+    display:table-cell;
+    text-align:center;
+    padding-top: 5px;
+}
+
+.summary-box-summary-view-demand .value-level {
+    width: 100%;
+    text-align:center;
+    font-size:14px;
+    padding-top: 10px;
+    display:table;
+}
+
+.summary-box-summary-view-demand .value-level p{
+    width: 100%;
+    text-align:center;
+    font-size:14px;
+    display: table-cell;
+}
+
+.summary-box-summary-view-demand .levelRange {
+    color: gray;
+}
+
+.summary-box-summary-view-demand .levelActivated {
+    color: #465865;
+}
+
+.summary-box-summary-view-demand .value-level span {
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.ontario-demand-table {
+    width:280px;
+    margin:auto;
+    margin-top: 40px;
+}
+
+.ontario-demand-table tbody{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #465865;  
+    
+}
+
+.ontario-demand-table tbody td{
+    line-height:20px;
+}
+
+.ontario-demand-table tfoot td{
+    line-height:25px;    
+}
+
+/* Carbon Emissions */
+
+.image-wrapper {
+
+}
+
+.image-wrapper img{
+    bottom: 0;
+}
+
+/*---------------------------------------------------------------------*/
+/* CARBON EMISSIONS
+/*---------------------------------------------------------------------*/
+
+.summary-box-summary-view-emissions {
+    height: 210px;
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top:10px;
+/*
+    background-image:url(../assets/image-webapp-box-emissions.png);
+    background-repeat:no-repeat; 
+    background-size:auto;
+    background-position-x: center;
+    background-position: top;
+*/
+}
+
+.summary-box-summary-view-emissions .title {
+    width: 100%;
+    text-align:center;
+    display:table;
+}
+
+.summary-box-summary-view-emissions .title p{
+    display:table-cell;
+    text-align:center;
+}
+
+.summary-box-summary-view-emissions .value {
+    width: 100%;
+    font-size: 18px;
+/*     font-weight: 100; */
+    text-align:center;
+    display:table;
+}
+
+.summary-box-summary-view-emissions .value p{
+    display:table-cell;
+    text-align:center;
+    padding-top: 5px;
+}
+
+.summary-box-summary-view-emissions .value-level {
+    width: 100%;
+    text-align:center;
+    font-size:14px;
+    padding-top: 10px;
+    display:table;
+}
+
+.summary-box-summary-view-emissions .value-level p{
+    width: 100%;
+    text-align:center;
+    font-size:14px;
+    display: table-cell;
+}
+
+.summary-box-summary-view-emissions .levelRange {
+    color: gray;
+}
+
+.summary-box-summary-view-emissions .levelActivated {
+    color: #465865;
+}
+
+.summary-box-summary-view-emissions .value-level span {
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.summary-box-summary-view-intensity {
+    height: 210px;
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top:10px;
+/*
+    background-image:url(../assets/image-webapp-box-intensity.png);
+    background-repeat:no-repeat; 
+    background-size:auto;
+    background-position-x: center;
+    background-position: top;
+*/
+}
+
+.summary-box-summary-view-intensity .title {
+    width: 100%;
+    text-align:center;
+    display:table;
+}
+
+.summary-box-summary-view-intensity .title p{
+    display:table-cell;
+    text-align:center;
+}
+
+.summary-box-summary-view-intensity .value {
+    width: 100%;
+    font-size: 18px;
+/*     font-weight: 100; */
+    text-align:center;
+    display:table;
+}
+
+.summary-box-summary-view-intensity .value p{
+    display:table-cell;
+    text-align:center;
+    padding-top: 5px;
+}
+
+.summary-box-summary-view-intensity .value-level {
+    width: 100%;
+    text-align:center;
+    font-size:14px;
+    padding-top: 10px;
+    display:table;
+}
+
+.summary-box-summary-view-intensity .value-level p{
+    width: 100%;
+    text-align:center;
+    font-size:14px;
+    display: table-cell;
+}
+
+.summary-box-summary-view-intensity .levelRange {
+    color: gray;
+}
+
+.summary-box-summary-view-intensity .levelActivated {
+    color: #465865;
+}
+
+.summary-box-summary-view-intensity .value-level span {
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.emissions-context {
+	width: 275px;
+	padding-top: 10px;
+	margin:auto;
+}
+
+.emissions-context .cars {
+	width: 130px;
+	margin-bottom: 10px;
+	text-align: center;
+	float: left;
+}
+
+.emissions-context .trees {
+	width: 115px;
+	margin-bottom: 10px;
+	text-align: center;
+	float: right;
+}
+
+.emissions-context .value {
+    width: 100%;
+    font-size: 18px;
+/*     font-weight: 100; */
+    text-align:center;
+    display:table;
+}
+
+.emissions-context .value p{
+	width: 100px;
+    display:table-cell;
+    text-align:center;
+}
+
+.emissions-context .value-level {
+	margin: auto;
+    font-size:18px;
+    display:table;
+}
+
+.emissions-context .value-level p{
+    text-align:center;
+    font-size:18px;
+    display: table-cell;
+}
+
+.emissions-context .value-level span {
+	width: 100%;
+	margin: auto;
+}
+
+/*---------------------------------------------------------------------*/
+/* PLANT MAP
+/*---------------------------------------------------------------------*/
+
+/* no media query since default for phones is no query */
+.map-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #FFFFFF;
+}
+
+/*---------------------------------------------------------------------*/
+/* CARBON EMISSIONS
+/*---------------------------------------------------------------------*/
+
+.column-box-body {
+    text-align:left;
+    font-size: 14px;
+    height: 608px;
+    width: 300px;
+    margin: auto;
+}
+
+.ontario-capacity-chart-container {
+    position: relative;
+    height: 200px; 
+    width: 300px;  
+    margin-bottom: 20px;
+}
+
+#ontario-capacity-chart {
+    height:200px;
+    width: 200px;
+    margin: 0px auto;
+    padding: 0px;
+/*
+    left:50%;
+    top:50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+*/
+}
+
+.ontario-capacity-chart-center-label{
+	font-size: 22px;
+/* 	font-weight: 100; */
+	margin-top: -125px;
+	margin-left: 95px;
+/*
+    left:50%;
+    top:50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+*/
+    position:absolute;
+    z-index: 2;
+    text-align: center;
+}
+
+table tr td {
+    padding: 5px 8px;
+    line-height: 20px;
+}
+
+.ontario-capacity-table {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 300px;
+    margin: auto;
+}
+
+td.ontario-capacity-source {
+    text-transform: capitalize;
+}
+
+td.ontario-capacity-value, td.ontario-capacity-percentage {
+    text-align: right;
+}
+
+.ontario-capacity-table tbody{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.ontario-capacity-table tbody td{
+    line-height:16px;
+}
+
+.ontario-capacity-table tfoot tr td{
+    color: #8E8E8E;
+    line-height: 32px;
+    text-align: center;
+    margin: auto;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #CCCCCC;
+}
+
+/*---------------------------------------------------------------------*/
+/* HELP AND ABOUT
+/*---------------------------------------------------------------------*/
+
+.gridwatch-block-help-about-lg {
+    width: 100%;
+    height: 668px;
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-overflow-scrolling: touch;
+}
+
+.gridwatch-block-help-about-header-lg {
+	height: 40px;
+    font-size: 16px;
+	padding: 10px;
+	margin-bottom: 10px;
+    border-bottom:1pt solid #efeff4;
+}
+
+.column-box-body-help-about-lg {
+    text-align:left;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto;
+    height: 610px;
+    overflow-y: auto;
+}
+
+.column-box-body-help-about-lg p {
+    text-align:left;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+}
+
+.column-box-body-help-about-lg h3 {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 300;
+    text-decoration: none !important;
+    line-height: 18px;
+    color: white;
+    text-align:left;
+    vertical-align: middle;  
+    background-color: grey; 
+    padding-left: 10px;
+    margin: auto;
+}
+
+/*---------------------------------------------------------------------*/
+/* BRUCE POWER
+/*---------------------------------------------------------------------*/
+
+#carouselDiv {
+	margin: auto;
+}
+
+.gridwatch-block-bruce {
+    width: 100%;
+    height: 668px;
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.gridwatch-block-bruce-header {
+	height: 40px;
+    font-size: 16px;
+	padding: 10px;
+	margin-bottom: 10px;
+    border-bottom:1pt solid #efeff4;
+}
+
+.column-box-body-bruce {
+    text-align:left;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto;
+    height: 650px;
+    overflow-y: auto;
+}
+
+.column-box-body-bruce p {
+    text-align:left;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+}
+
+/*---------------------------------------------------------------------*/
+/* PAGE FOOTER
+/*---------------------------------------------------------------------*/
+
+.footer {
+	height: 50px;
+	width: 100%;
+	background: #ffffff;	
+	border-top: 1px solid #cccccc;
+	position: fixed;
+	display: block;
+	top:auto;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+}
+
+.footer p {
+	text-align: center;
+	font-size: 14px;
+	line-height: 50px;
+/* 	font-weight: 100; */
+}
+
+/*---------------------------------------------------------------------*/
+/* FADE ANIMATIONS
+/*---------------------------------------------------------------------*/
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+}
+
+100% {
+    opacity: 1;
+}
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+}
+
+100% {
+    opacity: 1;
+}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+}
+
+100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    transform: translateY(-20px);
+}
+
+100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+}
+
+100% {
+    opacity: 0;
+}
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+}
+
+100% {
+    opacity: 0;
+}
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+.animate0 {
+    -webkit-animation-duration: .8s;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: .8s;
+    -moz-animation-delay: 0s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: .8s;
+    -ms-animation-delay: 0s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: .8s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;	          
+}         
+
+.animate1{
+    -webkit-animation-duration: .8s;
+    -webkit-animation-delay: .2s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: .8s;
+    -moz-animation-delay: .2s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: .8s;
+    -ms-animation-delay: .2s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: .8s;
+    animation-delay: .2s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;	          
+} 
+
+.animate2{
+    -webkit-animation-duration: .8s;
+    -webkit-animation-delay: .4s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: .8s;
+    -moz-animation-delay: .4s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: .8s;
+    -ms-animation-delay: .4s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: .8s;
+    animation-delay: .4s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;	          
+} 
+
+.animate3{
+    -webkit-animation-duration: .8s;
+    -webkit-animation-delay: .6s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: .8s;
+    -moz-animation-delay: .6s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: .8s;
+    -ms-animation-delay: .6s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: .8s;
+    animation-delay: .6s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;	          
+}   
+
+.animate4{
+    -webkit-animation-duration: .8s;
+    -webkit-animation-delay: .8s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: .8s;
+    -moz-animation-delay: .8s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: .8s;
+    -ms-animation-delay: .8s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: .8s;
+    animation-delay: .8s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;	          
+}  
+
+.animate5{
+    -webkit-animation-duration: .8s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: .8s;
+    -moz-animation-delay: 1s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: .8s;
+    -ms-animation-delay: 1s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: .8s;
+    animation-delay: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;	          
+}    
+.animate6{
+    -webkit-animation-duration: .8s;
+    -webkit-animation-delay: 1.2s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: .8s;
+    -moz-animation-delay: 1.2s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: .8s;
+    -ms-animation-delay: 1.2s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: .8s;
+    animation-delay: 1.2s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;	          
+}    
+
+.animateFooter{
+    -webkit-animation-duration: 1.8s;
+    -webkit-animation-delay: 3.0s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: 1.8s;
+    -moz-animation-delay: 3.0s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: 1.8s;
+    -ms-animation-delay: 3.0s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: 1.8s;
+    animation-delay: 3.0s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;	          
+}
+
+/*---------------------------------------------------------------------*/
+/* MEDIA
+/*---------------------------------------------------------------------*/
+
+@media only screen and (max-width: 479px) {
+
+.flex-control-thumbs li {padding:15px 2px !important;}
+.flex-direction-nav a {margin: 5px 0 0 !important;}
+.flexslider {margin: 0; padding: 0; margin-top: 0px;}
+.flex-direction-nav .flex-prev {opacity: 1; left: 0; display: none;}
+.flex-direction-nav .flex-next {opacity: 1; right: 0; display: none;}
+.flex-control-nav {width: 100%; position: absolute; bottom: 70px; text-align: center;}
+
+.wrapper-ios {
+	margin-top: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 100%;
+}
+
+.page-content-ios {
+	width: 100%;
+	height: 100%;
+	margin-top:10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
+.page-head-title {
+	line-height:50px;
+	font-size: 16px;
+	color: #465865; 
+	width: 35%;
+}
+.page-head-title-center {
+    line-height:50px;
+    font-size: 16px;
+    color: #465865; 
+    width: 35%;
+}
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding:0px;  
+}
+.td.energy-source-title {
+	width:50px;
+	font-size: 16px; 
+	color: #465865; 
+} 
+.breakdown-table-title {
+	font-size: 16px;
+	line-height: 40px;
+	padding: 5px 0px 4px 10px;
+	margin-left: 5px;
+	color:#465865;
+	border-bottom-style: solid;
+	border-bottom-color: #efefef;
+	border-bottom-width: 1px;
+}
+td.energy-source-icon img {
+	width: 30px;
+	margin-left: 5px;
+}
+.energy-source-selected td{
+	background-color: #fafafa;
+}	
+.energy-source-values {
+	font-size: 14px;
+	color: #465865; 
+}
+.energy-source-breakdown-import-export-cell {
+	font-size: 14px;
+	cursor: pointer;
+}
+td.power-plant-name-data {
+	height: 44px;
+	line-height: 33px; 
+	width: 50%;
+	font-size: 14px;
+	padding-left: 10px;
+}
+td.power-plant-output-data {
+    height: 44px;
+    line-height: 33px;
+    width: 25%;
+    font-size: 14px;
+}	
+td.power-plant-capability-data {
+    height: 44px;
+    line-height: 33px;
+    width: 25%;
+    font-size: 14px;
+}
+.power-plant-breakdown-summary-values {
+    line-height: 40px;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 14px;
+    text-shadow: none;
+}
+.rotate {
+	display: inline;
+	margin-top: 40px;
+}
+.footer p {
+	text-align: center;
+	font-size: 12px;
+	line-height: 50px;
+}
+.gridwatch-block-how {
+	width: 100%;
+    margin-top: 0px;
+    margin-bottom: -40px;
+    position: relative;
+    background: #ffffff;
+}
+.img-responsive {
+	width: 90%;
+}
+.import-export-summary {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+}
+
+@media only screen and (max-width: 767px) {
+
+.flex-direction-nav a {margin: 10px 0 0 !important;}
+
+.row {
+	padding:0px;
+	margin: 0px;  
+} 
+.col-sm-12 {
+	margin: 0px;
+	padding: 0px;
+}
+.col-sm-6 {
+	margin: 0px;
+	padding: 0px;
+}
+.col-xs-6 {
+	margin: 0px;
+	padding: 0px;
+}
+.page-head-title {
+	line-height:50px;
+	font-size: 16px;
+	width: 40%;
+}
+.page-head-title-center {
+    line-height:50px;
+    font-size: 16px;
+/*     margin-left: -50px; */
+    width: 35%;
+}
+.energy-source-selected td {
+	background-color: #fafafa;
+}
+.block {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+}	    
+.gridwatch-block {
+    width: 100%;
+/*     margin-top: 0px; */
+/*     margin-bottom: -10px; */
+    position: relative;
+    background: #ffffff;
+}
+.gridwatch-block-how {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: -40px;
+    position: relative;
+    background: #ffffff;
+}
+.gridwatch-block-help-about-lg {
+    margin-top: 0px;
+    height: auto;
+}
+.column-box-body-help-about-lg {
+    text-align:left;
+    font-size: 14px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: auto;
+    height: auto;
+    overflow: hidden;
+}
+.gridwatch-block-bruce {
+    margin-top: 0px;
+    height: auto;
+}
+.column-box-body-bruce {
+    text-align:left;
+    font-size: 14px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: auto;
+    height: auto;
+    overflow: hidden;
+}
+.summary-box {
+	width: 100%;
+    height: 150px;
+    background-color:#ffffff;
+}
+.summary-box .title {
+    width: 100%;
+    font-size:16px;
+/*     font-weight: 100; */
+    display:table;
+    text-align: center;
+    padding-top: 12px;
+}
+.summary-box .value p{
+    text-align:center;
+    font-size: 22px;
+/*     font-weight: 100; */
+    padding-top: 10px;
+    display:table-cell;
+}
+.summary-box .value-level {
+    width: 100%;
+    font-size:14px;
+/*     font-weight: 100; */
+    padding-top: 20px;
+    display:table;
+}
+}

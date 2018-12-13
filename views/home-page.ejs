@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Site Details -->
+	<title>Gridwatch | Web App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="See where your power comes from, when the grid is clean and when it's not." />
+    <meta name="keywords" content="Gridwatch,Mobile,App,Ontario,Carbon Emissions,Carbon Intensity,Power,Demand" />
+    <meta name="author" content="Energ Insight" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon"> 
+    
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <!-- Twitter meta -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@Energy_Mobile">
+	<meta name='twitter:image' content='http://gridwatch.ca/images/gridwatch-icon-fb.png'>
+	<meta name="twitter:description" content="See where your power comes from, when the grid is clean and when it&#039;s not.">
+	
+	<!-- Facebook meta -->
+	<meta property="fb:admins" content="100002218601348"/>
+	<meta property="og:title" content="Gridwatch"/>
+	<meta property="og:url" content="http://gridwatch.ca"/>
+	<meta property="og:site_name" content=" | by EnergyMobile Studios"/>
+	<meta property="og:type" content='article'/>
+	<meta property="og:image" content="http://gridwatch.ca/images/gridwatch-icon-fb.png"/>
+	<meta property="og:image:width" content="1024" />
+	<meta property="og:image:height" content="1024" />
+    
+    <!-- non-retina iPhone pre iOS 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/apple-touch-icon-57x57.png">
+    <!-- non-retina iPad pre iOS 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/apple-touch-icon-72x72.png">
+    <!-- non-retina iPad iOS 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="assets/apple-touch-icon-76x76.png">
+    <!-- retina iPhone pre iOS 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/apple-touch-icon-114x114.png">
+    <!-- retina iPhone iOS 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="assets/apple-touch-icon-120x120.png">
+    <!-- retina iPad pre iOS 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/apple-touch-icon-144x144.png">
+    <!-- retina iPad iOS 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="assets/apple-touch-icon-152x152.png">
+    <!-- BB10 -->
+    <link rel="apple-touch-icon-precomposed" sizes="150x150" href="assets/apple-touch-icon-150x150.png">
+	<!-- Android -->
+	<link rel="shortcut icon" sizes="196x196" href="assets/apple-touch-icon-196x196.png">   
+	 
+    <!-- Stylesheets -->    
+    <!--[if lt IE 7]>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-ie7.css"/>    
+    <![endif]-->        
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/> 
+    <![endif]-->   	  
+	<link rel="stylesheet" type="text/css" href="css/gridwatch-styles.css?v3" />
+		
+	<!-- must load first to fix Internet Explorer 10 in Windows 8 and Windows Phone 8 -->
+    <script type="text/javascript" src="js/wp8-ie10-fix.js"></script>
+    
+    <!-- Pre-load Scripts --> 
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="js/html5shiv.js"></script>
+      <script type="text/javascript" src="js/respond.min.js"></script>
+      <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+      <script type="text/javascript" src="js/css3-mediaqueries.js"></script>
+    <![endif]--> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.2/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="js/gridwatch-homePage.js?v2"></script>
+    
+    <style>
+	.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+		background-color: #efeff4;
+		text-shadow: none;
+		color: #465865;
+	}    
+	</style>    
+</head>
+<body>
+	<div data-role="page" id="generation" data-enhanced="false">
+	<div class="gridwatch-overlay">		
+	</div>
+	<div class="page-head">
+	     <ul class="page-head-elements">
+			<li><a href="#" id="navigation-menu-toggle" style="border-style: none"><img src="assets/icon-webapp-menu.png?v1" data-rjs="3" alt="Menu" /></a></li>
+         </ul>
+         <span class="page-head-title" bind="timeOfReading">updating data...</span>
+         <ul class="page-head-elements pull-right">
+	     	<li><a href="#" class="reload-button" style="border-style: none"><img src="assets/icon-webapp-refresh.png?v1" data-rjs="3" alt="Refresh" /></a></li>
+         </ul>
+	</div>	
+	<div class="wrapper">
+        <div id="sidr" class="sidr">
+        	<div class="page-navigation">
+                <div class="page-navigation-info">
+                    <img src="assets/image-webapp-gridwatch-logo.png?v1" data-rjs="3" alt="Gridwatch" />
+                </div>
+                <ul class="navigation">
+                   <li>
+                       <a href="home-page.html" rel="external" class="selected"><img src="assets/icon-webapp-menu-mostrecenthour.png?v1" data-rjs="3" alt="Most Recent Hour" /><p class="navigation-text">most recent hour</p></a>
+					   <a href="todays-trends.html" rel="external"><img src="assets/icon-webapp-menu-trends.png?v1" data-rjs="3" alt="Today's Trends" /><p class="navigation-text">today's trends</p></a>
+					   <a href="generation-demand.html" rel="external"><img src="assets/icon-webapp-menu-generation.png?v1" data-rjs="3" alt="Generation and Demand" /><p class="navigation-text">generation &amp; demand</p></a>
+                       <a href="carbon-emissions.html" rel="external"><img src="assets/icon-webapp-menu-emissions.png?v1" data-rjs="3" alt="Carbon Emissions" /><p class="navigation-text">carbon emissions</p></a>
+                       <a href="plant-map.html" rel="external"><img src="assets/icon-webapp-menu-plantmap.png?v1" data-rjs="3" alt="Plant Map" /><p class="navigation-text">plant map</p></a>
+                       <a href="total-capacity.html" rel="external"><img src="assets/icon-webapp-menu-mix.png?v1" data-rjs="3" alt="Total Capacity" /><p class="navigation-text">total capacity</p></a>
+                       <a href="help-and-about.html" rel="external"><img src="assets/icon-webapp-menu-help.png?v2" data-rjs="3" alt="Help and How to" /><p class="navigation-text">help &amp; how to</p></a>                   
+                   </li>
+               </ul>
+           </div> <!-- End of page-navigation -->
+        </div> <!-- End of sidr -->
+        <div class="page-content fadeIn animate1" id="main-page-content">
+            <div class="container">
+                <div class="row hidden-xs">
+                	<!-- optimized for tablet portrait and larger -->
+                    <div class="col-xs-3 col-sm-6 col-md-3">
+                        <div class="summary-box">
+                            <div class="title"><p>POWER GENERATED</p></div>
+                            <div class="value"><p><span bind="powerGenerated">0</span> MW</p></div>
+							<div class="value-level"><p><span id="powerGeneratedLow" class="levelRange">LOW </span><span id="powerGeneratedAvg" class="levelRange">AVG </span><span id="powerGeneratedHigh" class="levelRange">HIGH </span></p></div>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-6 col-md-3">
+						<div class="summary-box">
+							<div class="title"><p>ONTARIO DEMAND</p></div>
+							<div class="value"><p><span bind="ontarioDemand">0</span> MW</p></div>
+							<div class="value-level"><p><span id="ontarioDemandLow" class="levelRange">LOW</span> <span id="ontarioDemandAvg" class="levelRange">AVG</span> <span id="ontarioDemandHigh" class="levelRange">HIGH</span></p></div>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-6 col-md-3">
+						<div class="summary-box">
+							<div class="title"><p>TOTAL EMISSIONS</p></div>
+							<div class="value"><p><span bind="totalCo2e">0</span> tonnes</p></div>
+							<div class="value-level"><p><span id="totalCo2eLow" class="levelRange">LOW </span><span id="totalCo2eAvg" class="levelRange">AVG </span><span id="totalCo2eHigh" class="levelRange">HIGH</span></p></div>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-6 col-md-3">
+						<div class="summary-box">
+							<div class="title"><p>CO2e INTENSITY</p></div>
+							<div class="value"><p><span bind="co2eIntensity">0</span> g/kWh</p></div>
+							<div class="value-level"><p><span id="co2eIntensityLow" class="levelRange">LOW</span> <span id="co2eIntensityAvg" class="levelRange">AVG</span> <span id="co2eIntensityHigh" class="levelRange">HIGH</span></p></div>
+						</div>
+					</div>
+				</div><!-- End of summary views row -->				
+				<!-- optimized for handheld <768px width -->
+				 <div class="row visible-xs">
+                    <div class="col-xs-6">
+                        <div class="summary-box">
+                            <div class="title"><p>POWER<br />GENERATED</p></div>
+                            <div class="value"><p><span bind="powerGenerated">0</span> MW</p></div>
+							<div class="value-level"><p><span id="powerGeneratedLow" class="levelRange">LOW </span><span id="powerGeneratedAvg" class="levelRange">AVG </span><span id="powerGeneratedHigh" class="levelRange">HIGH </span></p></div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="summary-box">
+							<div class="title"><p>ONTARIO<br />DEMAND</p></div>
+							<div class="value"><p><span bind="ontarioDemand">0</span> MW</p></div>
+							<div class="value-level"><p><span id="ontarioDemandLow" class="levelRange">LOW</span> <span id="ontarioDemandAvg" class="levelRange">AVG</span> <span id="ontarioDemandHigh" class="levelRange">HIGH</span></p></div>
+						</div>
+					</div>
+				 </div>
+				 <div class="row visible-xs">	
+					<div class="col-xs-6">
+						<div class="summary-box">
+							<div class="title"><p>TOTAL<br />EMISSIONS</p></div>
+							<div class="value"><p><span bind="totalCo2e">0</span> tonnes</p></div>
+							<div class="value-level"><p><span id="totalCo2eLow" class="levelRange">LOW </span><span id="totalCo2eAvg" class="levelRange">AVG </span><span id="totalCo2eHigh" class="levelRange">HIGH</span></p></div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="summary-box">
+							<div class="title"><p>CO2e<br />INTENSITY</p></div>
+							<div class="value"><p><span bind="co2eIntensity">0</span> g/kWh</p></div>
+							<div class="value-level"><p><span id="co2eIntensityLow" class="levelRange">LOW</span> <span id="co2eIntensityAvg" class="levelRange">AVG</span> <span id="co2eIntensityHigh" class="levelRange">HIGH</span></p></div>
+						</div>
+					</div>
+				</div><!-- End of summary views row -->			
+				<div class="row">
+				    <div class="col-md-6 col-sm-6">
+				        <div class="block">
+				            <div class="breakdown-table-title">GENERATION - FUEL TYPE					            
+				            </div>
+				            <table class="energy-source-breakdown-table">
+				                <tbody>
+				                    <tr energytype="NUCLEAR" class="energy-source-breakdown-standard-cell">
+				                    	<td class="energy-source-icon"><img src="assets/icon-webapp-fuelsource-sm-nuclear.png?v1" data-rjs="3" alt="Nuclear"/></td>
+				                        <td class="energy-source-title">nuclear</td>
+				                        <td class="energy-source-values">
+				                        	<div class="bar-background">
+				                            	<div class="bar" id="nuclear-bar"></div>
+											</div>
+											<div style="float: left"><span bind="nuclearPercentage">0</span>%</div>
+											<div style="float: right"><span bind="nuclearOutput">0</span> MW</div>
+										</td>
+										<td class="energy-source-disclosure"><img src="assets/icon-webapp-disclosure.png?v1" data-rjs="3" alt="Nuclear"/></td>
+									</tr>
+									<tr energytype="HYDRO" class="energy-source-breakdown-standard-cell">
+				                    	<td class="energy-source-icon"><img src="assets/icon-webapp-fuelsource-sm-hydro.png?v1" data-rjs="3" alt="Hydro"/></td>
+										<td class="energy-source-title">hydro</td>
+										<td class="energy-source-values">
+				                        	<div class="bar-background">
+				                            	<div class="bar" id="hydro-bar"></div>
+											</div>
+											<div style="float: left"><span bind="hydroPercentage">0</span>%</div>
+											<div style="float: right"><span bind="hydroOutput">0</span> MW</div>
+										</td>
+										<td class="energy-source-disclosure"><img src="assets/icon-webapp-disclosure.png?v1" data-rjs="3" alt="Hydro"/></td>
+					               	</tr>
+					               	<tr energytype="GAS" class="energy-source-breakdown-standard-cell">
+					                	<td class="energy-source-icon"><img src="assets/icon-webapp-fuelsource-sm-gas.png?v1" data-rjs="3" alt="Gas"/></td>
+										<td class="energy-source-title">gas</td>
+										<td class="energy-source-values">
+											<div class="bar-background">
+												<div class="bar" id="gas-bar"></div>
+											</div>
+											<div style="float: left"><span bind="gasPercentage">0</span>%</div>
+											<div style="float: right"><span bind="gasOutput">0</span> MW</div>
+										</td>
+										<td class="energy-source-disclosure"><img src="assets/icon-webapp-disclosure.png?v1" data-rjs="3" alt="Gas" /></td>
+							        </tr>
+							        <tr energytype="WIND" class="energy-source-breakdown-standard-cell">
+							            <td class="energy-source-icon"><img src="assets/icon-webapp-fuelsource-sm-wind.png?v1" data-rjs="3" alt="Wind"/></td>
+							            <td class="energy-source-title">wind</td>
+							            <td class="energy-source-values">
+							                <div class="bar-background">
+							                    <div class="bar" id="wind-bar">
+							                    </div>
+							                </div>
+							                <div style="float: left"><span bind="windPercentage">0</span>%</div>
+							                <div style="float: right"><span bind="windOutput">0</span> MW</div>
+							            </td>
+							            <td class="energy-source-disclosure"><img src="assets/icon-webapp-disclosure.png?v1" data-rjs="3" alt="Wind"/></td>
+							        </tr>
+							        <tr energytype="SOLAR" class="energy-source-breakdown-standard-cell">
+							            <td class="energy-source-icon"><img src="assets/icon-webapp-fuelsource-sm-solar.png?v1" data-rjs="3" alt="Solar"/></td>
+							            <td class="energy-source-title">solar</td>
+							            <td class="energy-source-values">
+							                <div class="bar-background">
+							                    <div class="bar" id="solar-bar">
+							                    </div>
+							                </div>
+							                <div style="float: left"><span bind="solarPercentage">0</span>%</div>
+							                <div style="float: right"><span bind="solarOutput">0</span> MW</div>
+							            </td>
+							            <td class="energy-source-disclosure"><img src="assets/icon-webapp-disclosure.png?v1" data-rjs="3" alt="Solar"/></td>
+							        </tr>
+							        <tr energytype="BIOFUEL" class="energy-source-breakdown-standard-cell">
+							            <td class="energy-source-icon"><img src="assets/icon-webapp-fuelsource-sm-biofuel.png?v1" data-rjs="3" alt="Biofuel"/></td>
+							            <td class="energy-source-title">biofuel</td>
+							            <td class="energy-source-values">
+							               <div class="bar-background">
+							                <div class="bar" id="biofuel-bar">
+							                </div>
+							            </div>
+							            <div style="float: left"><span bind="biofuelPercentage">0</span>%</div>
+							            <div style="float: right"><span bind="biofuelOutput">0</span> MW</div>
+							        </td>
+							        <td class="energy-source-disclosure"><img src="assets/icon-webapp-disclosure.png?v1" data-rjs="3" alt="Biofuel"/></td>
+									</tr>
+									<tr class="energy-source-breakdown-import-export-cell">
+							        	<td colspan="2"><img class="import-export-icon" src="assets/icon-webapp-ontario-netzero.png?v1" data-rjs="3" alt="import" style="height: 70px; width: 70px; margin-top: 3px; margin-bottom: 2px; margin-left: auto; margin-right: auto; display: block;"/></td>
+										<td>
+											<div style="display: inline">import</div>
+											<div class="imports"><span bind="imports">0</span> MW</div> 
+											<br />
+											<div style="display: inline">export</div>
+											<div class="exports"><span bind="exports">0</span> MW</div>
+											<br />
+											<div style="display: inline">net</div>
+											<div class="netImportExports"><span bind="netImportExports">0</span> MW
+											</div>
+										</td>
+										<td class="energy-source-disclosure"><img src="assets/icon-webapp-disclosure.png?v1" data-rjs="3" alt="Import Export"/></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div><!-- End of Energy Source Breakdown Table-->
+					<div class="col-md-6 col-sm-6 hidden-xs">
+						<div class="block">
+							<div class="power-plant-breakdown-table-header">
+								<div class="breakdown-table-title">GENERATION - PLANT									         
+								</div>
+								<div class="power-plant-breakdown-summary">
+				                	<div class="power-plant-breakdown-summary-title">nuclear</div>
+									<div class="power-plant-breakdown-summary-bar-background">
+				                    <div class="power-plant-breakdown-summary-bar"></div>
+				                </div>
+				                <div class="power-plant-breakdown-summary-values">
+				                    <div style="display: inline-block; float: left; line-height: 40px; text-shadow:none;">
+				                        <span class="power-plant-breakdown-summary-percentage">-- </span>% (of total grid)</div>
+				                        <div style="display: inline-block; float: right; line-height: 40px; text-shadow:none;">
+				                            <span class="power-plant-breakdown-summary-total">-- </span> MW
+				                        </div>
+				                    </div>
+				                </div>
+				                <div class="power-plant-column-header" style="margin-right: 15px;">
+				                    <table style="table-layout:fixed;">
+				                        <tr>
+				                            <td class="power-plant-name-data">
+				                                POWER PLANT
+				                            </td>
+				                            <td class="power-plant-output-data">
+				                                output   
+				                            </td>
+				                            <td class="power-plant-capability-data">
+				                                capability
+				                            </td>
+				                        </tr>
+				                    </table>
+				                </div>
+				            </div><!-- End of Power Plants Header -->                               
+				            <div class="import-export-breakdown-table-header" style="display: none;">
+				                <div class="breakdown-table-title">
+				                    GENERATION - IMPORTS/EXPORTS
+				                </div>
+				                <div class="import-export-summary" style="height:132px;">
+				                    <div style="padding-top:25px; vertical-align:middle">
+				                        <table style="table-layout:fixed;">
+				                            <tr>
+				                                <td>
+				                                    <img class="import-export-icon" src="assets/icon-webapp-ontario-netzero.png?v2" data-rjs="3" alt="import" style="height: 70px; width: 70px; margin-left: auto; margin-right: auto; display: block;"/></td>
+				                                    <td>
+				                                        <div style="display: inline">
+				                                            import
+				                                        </div>
+				                                        <div class="imports">
+				                                            <span bind="imports">0</span> MW
+				                                        </div> <br />
+				                                        <div style="display: inline">
+				                                            export
+				                                        </div>
+				                                        <div class="exports">
+				                                            <span bind="exports">0</span> MW
+				                                        </div> <br />
+				                                        <div style="display: inline">
+				                                            net
+				                                        </div>
+				                                        <div class="netImportExports">
+				                                            <span bind="netImportExports">0</span> MW
+				                                        </div>
+				                                    </td>
+				                                </tr>
+				                            </table>
+				                        </div>
+				                    </div>
+				                    <table class="import-export-column-titles" style="margin-right: 15px;">
+				                        <tr>
+				                            <td class="import-export-table-header-cell-first-column">
+				                                ZONE
+				                            </td>
+				                            <td class="import-export-table-header-cell">
+				                                import
+				                            </td>
+				                            <td class="import-export-table-header-cell">
+				                                export
+				                            </td>
+				                            <td class="import-export-table-header-cell">
+				                                net
+				                            </td>
+				                        </tr>
+				                    </table>
+				                </div><!-- End of Import Export Header -->
+				                <div class="power-plant-breakdown-table-div"><!-- Beginning of Power Plants table -->
+				                    <table id="PowerPlants" class="power-plant-breakdown-table">
+				                        <tbody class="power-plant-breakdown-summary-body">
+				                        </tbody>
+				                    </table><!-- End of Power Plants table -->
+				                    <table id="ImportExports" class="power-plant-breakdown-table" style="display: none;"><!-- Beginning of Import Export table -->
+				                        <tbody class="import-export-breakdown-summary-body">
+				                        </tbody>
+				                    </table> <!-- End of Import Export table -->
+				                </div>
+				            </div>
+				        </div><!-- End of Generation Table-->
+				    </div><!-- End of Tables -->
+				</div><!-- End of container -->
+			</div><!-- End of page content -->
+		</div><!-- End of wrapper -->
+	</div> <!-- End of page-one-->		
+	
+	<div class="modal fadeIn" id="plant-popup-modal" tabindex="-1" role="dialog" aria-labelledby="plant-popup-modal-label" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            	<button type="button" class="btn btn-default btn-sm pull-right" data-dismiss="modal">X</button>
+	                    <h4 class="modal-title" id="plant-popup-modal-label">
+	                        Modal title</h4>
+	            </div>
+                <div class="modal-body">
+                    Loading...
+                </div>
+	        </div>
+	    </div>
+	</div> <!-- End Modal -->		        
+	
+	<!-- Drill Down View -->
+	<div data-role="page" id="power-plants" data-enhanced="false">
+		<div class="page-head">
+			<ul class="page-head-elements">
+				<li><a href="#generation" data-direction="reverse" data-transition="slide"><img src="assets/icon-webapp-chevron-left.png?v2" data-rjs="3" /></a></li>
+			</ul>
+			<span class="page-head-title" bind="timeOfReading">updating data... </span>
+			<ul class="page-head-elements pull-right">
+				<li><a href="#" class="reload-button" style="border-style: none"><div style="width:26px"></a></li>
+			</ul>
+		</div><!-- End of page head-->
+		<div class="page-content">
+			<div class="block" style="margin:0;padding:0";>	
+				<div class="power-plant-breakdown-table-header" style="height: 176px;">
+					<div class="power-plant-breakdown-summary">
+						<div class="power-plant-breakdown-summary-title">nuclear</div>
+						<div class="power-plant-breakdown-summary-bar-background">
+							<div class="power-plant-breakdown-summary-bar"></div>
+						</div>
+						<div class="power-plant-breakdown-summary-values">
+							<div style="display: inline-block; float: left; line-height: 40px">
+								<span class="power-plant-breakdown-summary-percentage">-- </span>% (of total grid)</div>
+								<div style="display: inline-block; float: right; line-height: 40px">
+									<span class="power-plant-breakdown-summary-total">-- </span>MW
+								</div>
+							</div>
+					</div><!-- End of power-plant-breakdown-summary-->
+					<div class="power-plant-column-header">
+						<table style="table-layout:fixed;" style="margin-right: 0px;">
+							<tr>
+								<td class="power-plant-name-data">power plant</td>
+								<td class="power-plant-output-data">output</td>
+								<td class="power-plant-capability-data">capability</td>
+							</tr>
+						</table>
+					</div><!-- End of power-plant-column-header -->
+				</div><!-- End of Power Plants Header -->                               
+				<div class="import-export-breakdown-table-header" style="display:none;">
+					<div class="import-export-summary" style="height:132px;">
+						<div style="padding-top:25px; vertical-align:middle">
+							<table style="table-layout:fixed;">
+								<tr>
+									<td><img class="import-export-icon" src="assets/icon-webapp-ontario-netzero.png?v2" alt="import" /></td>
+									<td>
+										<div style="display: inline">
+											import
+										</div>
+										<div class="imports">
+											<span bind="imports">0</span> MW
+										</div> </br>
+										<div style="display: inline">
+											export
+										</div>
+										<div class="exports">
+											<span bind="exports">0</span> MW
+										</div> </br>
+										<div style="display: inline">
+											net
+										</div>
+										<div class="netImportExports">
+											<span bind="netImportExports">0</span> MW
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div><!-- End of import-export-summary -->
+					<table class="import-export-column-titles">
+						<tr>
+							<td class="import-export-table-header-cell-first-column">ZONE</td>
+							<td class="import-export-table-header-cell">import</td>
+							<td class="import-export-table-header-cell">export</td>
+							<td class="import-export-table-header-cell">net</td>
+						</tr>
+					</table>
+				</div><!-- End of import-export-table-header -->
+				<div class="power-plant-breakdown-table-div" style="height:100%;"><!-- Beginning of Power Plants table -->
+					<table id="PowerPlants" class="power-plant-breakdown-table">
+						<tbody class="power-plant-breakdown-summary-body"></tbody>
+					</table><!-- End of Power Plants table -->
+					<table id="ImportExports" class="power-plant-breakdown-table" style="display: none;"><!-- Beginning of Import Export table -->
+						<tbody class="import-export-breakdown-summary-body"></tbody>
+					</table> <!-- End of Import Export table -->
+				</div><!-- End of power-plant-breakdown-table-div -->
+			</div><!-- End of block-->
+		</div><!-- End of page-content-->
+	</div><!-- End of page-two-->
+
+	<!-- Scripts -->    
+	<script type="text/javascript" src="js/retina.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc874IM2WMFvJ3lxbUhQAu1okHYk6Nv6Y&js?v=3.exp&libraries=places"></script>
+		 
+	<!-- Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    
+      ga('create', 'UA-25611700-9', 'gridwatch.ca');
+      ga('send', 'pageview');    
+    </script>   	            
+</body>
+</html>
