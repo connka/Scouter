@@ -85,11 +85,11 @@ function percentArray(sumArr, totalObj) {
   const obj = {'GAS': []};
   Object.keys(sumArr).forEach((ele) => {
     if (sumArr[ele].MC) {
-      outObj[ele] = (sumArr[ele].MC/totalObj.MC).toPrecision(4);
+      outObj[ele] = parseFloat((sumArr[ele].MC/totalObj.MC).toPrecision(4));
     } else {
       sumArr[ele].forEach((ele) => {
         const key = Object.keys(ele)[0];
-        const outele = (ele[key].MC/totalObj.MC).toPrecision(4);
+        const outele = parseFloat((ele[key].MC/totalObj.MC).toPrecision(4));
         obj['GAS'].push({[key]: outele});
       });
     }

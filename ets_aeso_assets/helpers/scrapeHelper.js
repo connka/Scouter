@@ -67,7 +67,7 @@ module.exports.getTitle = function(html) {
     const output = $(`td tr:contains(${element}) td:nth-of-type(2)`).text();
     outObj[etsAesoSummaryTableTitle].push({
       'KEY': element,
-      'VALUE': output,
+      'VALUE': parseInt(output),
     });
   });
   return outObj;

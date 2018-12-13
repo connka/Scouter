@@ -1,7 +1,6 @@
 const db = require('../server/server');
 const to = require('../global/helpers').to;
 const svgFormatter = require('./helpers/indexHelper').svgFormatter;
-console.log(svgFormatter)
 /**
  * Pulls data from the server, adds a sum to the data object.
  * Then display the data as JSON

@@ -12,6 +12,7 @@ const getDataFromScraper = async () => {
       return data;
     })
   );
+  console.log(typeof(result.TIMESTAMP));
   return result;
 };
 /**

@@ -7,9 +7,9 @@
 function createPowerAssetObjectFromRows(assetNode, int) {
   return assetObj = {
     'ASSET': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(1)`).text(),
-    'MC': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(2)`).text(),
-    'TNG': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(3)`).text(),
-    'DCR': $(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(4)`).text(),
+    'MC': parseInt($(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(2)`).text()),
+    'TNG': parseInt($(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(3)`).text()),
+    'DCR': parseInt($(`${assetNode}> tr:nth-child(${3 + int}) > td:nth-child(4)`).text()),
   };
 };
 
