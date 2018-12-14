@@ -2,10 +2,13 @@
   "name": "scouter",
   "version": "1.0.0",
   "description": "A live power app for Alberta",
-  "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon express_server.js"
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev:server": "cd client && yarn build && cd .. && yarn start",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +42,7 @@
     "chai": "^4.2.0",
     "eslint": "^5.10.0",
     "eslint-config-google": "^0.11.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "concurrently": "^4.1.0"
   }
 }

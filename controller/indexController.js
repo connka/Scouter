@@ -10,8 +10,7 @@ const svgFormatter = require('./helpers/indexHelper').svgFormatter;
 exports.render_homepage = async (req, res) => {
   [err, dbData] = await to(db.passToServer().then(function(data) {
     const outData = data;
-
-    res.json(outData);
+    res.json({express: JSON.stringify(outData)});
   }));
   if (err) throw new Error(err.stack);
 };

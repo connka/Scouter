@@ -4,9 +4,8 @@ const path = require('path');
 const morgan = require('morgan');
 const compression = require('compression');
 
-
 // Set port 8080
-const PORT = 8080;
+const PORT = process.env.PORT || 5000;
 
 // Router Imports
 const indexRouter = require('./controller/indexRouter');
@@ -30,9 +29,17 @@ app.use(compression());
 // Use Router
 app.use('/', indexRouter);
 
-// Connect to default port
-app.listen(PORT, () => {
-  console.log(`App spining up on port ${PORT}!`);
-});
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 module.exports = app;
+
