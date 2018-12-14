@@ -8,7 +8,7 @@ require('dotenv').config();
  */
 const getDataFromScraper = async () => {
   const result = await (
-    dataScraper.sendDataToServer(etsAesoUrl).then(function(data) {
+    dataScraper.sendDataToServer(etsAesoUrl, true).then(function(data) {
       return data;
     })
   );
