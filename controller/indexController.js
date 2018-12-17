@@ -8,7 +8,7 @@ const svgFormatter = require('./helpers/indexHelper').svgFormatter;
  * @param {object} res response header
  */
 exports.render_homepage = async (req, res) => {
-  [err, dbData] = await to(db.passToServer().then(function(data) {
+  [err, dbData] = await to(db.getMostRecentData().then(function(data) {
     const outData = data;
     res.json({express: JSON.stringify(outData)});
   }));

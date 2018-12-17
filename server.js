@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const compression = require('compression');
+const cors = require('cors')
 
 // Set port 8080
 const PORT = process.env.PORT || 5000;
@@ -12,6 +13,7 @@ const indexRouter = require('./controller/indexRouter');
 
 // Creates an express application
 const app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

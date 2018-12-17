@@ -24,22 +24,45 @@ function insertToDb(data, db) {
   db.collection('test').insertOne({data});
 }
 
+const getLastInsert = async (db, N) => {
+  let outArr = []
+  await db.collection('test').find().sort({ $natural: -1 }).limit(N).forEach(queryResults => {
+    outArr.push(queryResults)
+  })
+  return outArr
+}
 // URL for mongoDB server
 const url = process.env.MONGODB_URI;
 // Name of mongoDB server
 const dbName = process.env.MONGODB_DBNAME;
 
-module.exports.passToServer = async () => {
+// module.exports.passToServer = async () => {
+//   let client;
+//   let out = {};
+//   try {
+//     client = await MongoClient.connect(url);
+//     console.log('Connected correctly to server');
+//     const db = client.db(dbName);
+//     out = await getDataFromScraper().then(function(dataToInput) {
+//       insertToDb(dataToInput, db);
+//       return dataToInput;
+//     });
+//   } catch (err) {
+//     console.log(err.stack);
+//   }
+//   // Close connection
+//   client.close();
+//   return out;
+// };
+
+module.exports.getMostRecentData = async () => {
   let client;
   let out = {};
   try {
     client = await MongoClient.connect(url);
     console.log('Connected correctly to server');
     const db = client.db(dbName);
-    out = await getDataFromScraper().then(function(dataToInput) {
-      insertToDb(dataToInput, db);
-      return dataToInput;
-    });
+    out = await getLastInsert(db, 1)
   } catch (err) {
     console.log(err.stack);
   }
@@ -47,3 +70,4 @@ module.exports.passToServer = async () => {
   client.close();
   return out;
 };
+
