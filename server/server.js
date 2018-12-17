@@ -68,6 +68,6 @@ module.exports.getMostRecentData = async () => {
   }
   // Close connection
   client.close();
-  return out[0].data['MATH']['SUMS']['percentObj']['COAL'];
+  return out;
 };
 
