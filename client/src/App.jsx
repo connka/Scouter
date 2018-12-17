@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import BreakdownContainer from './BreakDownContainer';
 
 class App extends Component {
   constructor() {
@@ -24,9 +25,13 @@ class App extends Component {
 
   render() {
     return (
+      <>
       <p>{this.state.response}</p>
+      <BreakdownContainer coalData={this.state.response} />
+      </>
     );
   }
 }
 
 export default App;
+// <p>{this.state.response}</p>
