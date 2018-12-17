@@ -30,10 +30,12 @@ class App extends Component {
   render() {
     return (
       <>
-      <Header />
+      <Header date={this.state.response.TIMESTAMP}/>
+      <div className='content-wrapper'>
       <SummaryContainer />
       <BreakdownContainer coalData={this.state.response} />
       <PlantBreakdown />
+      </div>
       {/* <SunburstGraph /> */}
 
       </>
