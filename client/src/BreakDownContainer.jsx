@@ -13,7 +13,7 @@ class BreakdownContainer extends Component {
               <tr energytype="COAL" className="energy-source-breakdown-standard-cell">
               <td className="energy-source-icon">
                   <img
-                  src="/docs/coal.png"
+                  src="src/docs/coal.png"
                   data-rjs="3"
                   alt="Icon made by http://www.freepik.com/ from https://www.flaticon.com"
               />
@@ -34,7 +34,7 @@ class BreakdownContainer extends Component {
               <img
                   src="/docs/arrow.png"
                   data-rjs="3"
-                  alt="Icon made by http://www.freepik.com/ from https://www.flaticon.com"
+                  alt="arrow"
               />
               </td>
           </tr>
@@ -62,7 +62,7 @@ class BreakdownContainer extends Component {
                 <img
                   src="/docs/arrow.png"
                   data-rjs="3"
-                  alt="Icon made by http://www.freepik.com/ from https://www.flaticon.com"
+                  alt="arrow"
                 />
               </td>
             </tr>
@@ -88,7 +88,7 @@ class BreakdownContainer extends Component {
                 <img
                   src="/docs/arrow.png"
                   data-rjs="3"
-                  alt="Icon made by http://www.freepik.com/ from https://www.flaticon.com"
+                  alt="arrow"
                 />
               </td>
             </tr>
@@ -116,7 +116,7 @@ class BreakdownContainer extends Component {
                 <img
                   src="/docs/arrow.png"
                   data-rjs="3"
-                  alt="Icon made by http://www.freepik.com/ from https://www.flaticon.com"
+                  alt="arrow"
                 />
               </td>
             </tr>
@@ -148,12 +148,12 @@ class BreakdownContainer extends Component {
                 <img
                   src="/docs/arrow.png"
                   data-rjs="3"
-                  alt="Icon made by http://www.freepik.com/ from https://www.flaticon.com"
+                  alt="arrow"
                 />
               </td>
             </tr>
             <tr className="energy-source-breakdown-import-export-cell">
-              <td colspan="2">
+              <td colSpan="2">
                 <img
                   className="import-export-icon"
                   src="/docs/albertamap.png"

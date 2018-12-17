@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import BreakdownContainer from './BreakDownContainer';
+import Header from './Header';
+import SummaryContainer from './SummaryContainer';
+import BreakdownContainer from './BreakdownContainer';
+import PlantBreakdown from './PlantBreakdown.jsx';
+// import SunburstGraph from './SunburstGraph';
 
 class App extends Component {
   constructor() {
@@ -26,8 +30,12 @@ class App extends Component {
   render() {
     return (
       <>
-      <p>{this.state.response}</p>
+      <Header />
+      <SummaryContainer />
       <BreakdownContainer coalData={this.state.response} />
+      <PlantBreakdown />
+      {/* <SunburstGraph /> */}
+
       </>
     );
   }
