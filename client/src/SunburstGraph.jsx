@@ -64,7 +64,7 @@ class SunburstGraph extends Component {
                     });
                 </script>
             </div>
-            </div>
+        </div>
         )
     }
 }
