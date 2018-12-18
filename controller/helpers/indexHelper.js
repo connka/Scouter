@@ -1,5 +1,6 @@
 module.exports.svgFormatter = (data) => {
   const outData = data;
+  console.log(data)
   // The required structrue for svg
   const outTable = {
     'name': 'TABLE', 'children':
@@ -34,7 +35,7 @@ module.exports.svgFormatter = (data) => {
     ) {
       // Loop through the fuel table information
       const targetTable = outTable.children[i].name;
-      const currentTable = outData[targetTable];
+      const currentTable = outData[0][targetTable];
       // Loop fuel table information into appropriate element
       currentTable.forEach((tableEle) => {
         outTable.children[i].children.push({'name': tableEle.ASSET, 'size': parseInt(tableEle.TNG)});

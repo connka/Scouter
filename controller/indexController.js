@@ -25,6 +25,7 @@ exports.render_homepage = async (req, res) => {
 exports.render_graph = async (req, res) => {
   // Send the data to server then format for svg
   [err, dbData] = await to(db.passToServer().then(function(data) {
+    console.log(data)
     const outTable = svgFormatter(data);
     res.json(outTable);
   }));
