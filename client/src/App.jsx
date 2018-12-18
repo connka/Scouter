@@ -4,7 +4,7 @@ import Header from './Header';
 import SummaryContainer from './SummaryContainer';
 import BreakdownContainer from './BreakdownContainer';
 import PlantBreakdown from './PlantBreakdown.jsx';
-// import SunburstGraph from './SunburstGraph';
+import SunburstGraph from './SunburstGraph';
 
 class App extends Component {
   constructor() {
@@ -36,7 +36,7 @@ class App extends Component {
       <BreakdownContainer coalData={this.state.response * 100 } />
       <PlantBreakdown />
       </div>
-      {/* <SunburstGraph /> */}
+      <SunburstGraph />
 
       </>
     );
