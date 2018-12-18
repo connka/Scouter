@@ -1,6 +1,7 @@
 const db = require('../server/server');
 const to = require('../global/helpers').to;
 const svgFormatter = require('./helpers/indexHelper').svgFormatter;
+const sendRecentDataToServer = require('../server/lib/reactSchema').sendRecentDataToServer;
 /**
  * Pulls data from the server, adds a sum to the data object.
  * Then display the data as JSON
@@ -8,7 +9,7 @@ const svgFormatter = require('./helpers/indexHelper').svgFormatter;
  * @param {object} res response header
  */
 exports.render_homepage = async (req, res) => {
-  [err, dbData] = await to(db.getMostRecentData().then(function(data) {
+  [err, dbData] = await to(sendRecentDataToServer().then(function(data) {
     const outData = data;
     res.json({express: JSON.stringify(outData)});
   }));
