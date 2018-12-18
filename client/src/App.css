@@ -26,9 +26,8 @@ body {
   
   .content-wrapper {
     display: flex;
-    width: 98%;
-    padding-top: 85px;
-    padding-right: 25px;
+    padding-top: 45px;
+    justify-content: center;
   }
   /**************HEADER**************/
   
@@ -64,7 +63,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     width: 225px;
-    padding: 0 30px 0 0;
+    padding-right: 25px;
   }
   
   .summary-box {
@@ -106,6 +105,7 @@ body {
   /**************BREAKDOWN TABLE**************/
   .breakdown-container {
     flex: 1;
+    width: 600px;
   }
   
   .breakdown-table-title {
@@ -185,7 +185,6 @@ body {
     margin-bottom: 10px;
     background-color:#0a0a0a;
     z-index:2;
-    float: left;
   }
 
   .percentage {
@@ -292,6 +291,7 @@ body {
   /**************PLANT BREAKDOWN**************/
   .plant-container {
   flex: 1;
+  width: 600px;
   }
   .power-plant-breakdown-table-header {
     height: 226px;

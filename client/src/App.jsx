@@ -33,7 +33,7 @@ class App extends Component {
       <Header date={this.state.response.TIMESTAMP}/>
       <div className='content-wrapper'>
       <SummaryContainer />
-      <BreakdownContainer coalData={this.state.response} />
+      <BreakdownContainer coalData={this.state.response * 100 } />
       <PlantBreakdown />
       </div>
       {/* <SunburstGraph /> */}
