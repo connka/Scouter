@@ -1,4 +1,4 @@
-const db = require('../server');
+const getMostRecentData = require('../server').getMostRecentData;
 
 function sort(obj) {
   return Object.keys(obj).sort(function(a, b) {
@@ -21,6 +21,15 @@ const returnSortedObject = (obj) => {
   return output;
 };
 
+module.exports.getData = async () => {
+  let v;
+  v = await getMostRecentData()
+  let x = mainColRefac(v)
+  let y = returnSortedObject(v)
+  y.push(x)
+  return y 
+};
+
 const breakDownContainerSchema = (inputData) => {
   const target = inputData[0].data['MATH']['SUMS']['percentObj'];
   let gasSum = 0;
@@ -38,7 +47,8 @@ const plantBreakDownSchema = (inputData, targetVal) => {
   return targetVal;
 };
 
-db.getMostRecentData().then((out) => {
+
+const mainColRefac = (out) => {
   const targetValues = ['COAL', 'HYDRO', 'WIND', 'BIOMASS AND OTHER', 'GAS'];
   const gasVals = ['Simple Cycle', 'Cogeneration', 'Combined Cycle'];
   const outObj = {};
@@ -56,7 +66,6 @@ db.getMostRecentData().then((out) => {
       outObj[element] = sortArrByMC(plantBreakDownSchema(out, target));
     }
   });
-  console.log(outObj)
+  return outObj
   // console.log(sortArrByMC(plantBreakDownSchema(out)))
-});
-
+};
