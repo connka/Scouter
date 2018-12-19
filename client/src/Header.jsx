@@ -7,7 +7,7 @@ class Header extends Component {
         return(
         <div className="header">
             <div className="date">
-                <span>hi</span>
+            {/* {this.props.date.time} */}
             </div>
             <button value="Refresh Page" className="refresh" onClick={() => {window.location.reload()}}>
             <img src={ require('./docs/refresh.png') } alt="refresh"/>

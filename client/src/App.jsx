@@ -30,7 +30,10 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state[0])
+    if (!this.state[0]) return (
+      //eslint-disable-next-line
+      <p>{this.state.response}</p>
+    );
     return (
       <div>
         <Header date={this.state[0]} />
