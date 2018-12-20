@@ -2,6 +2,9 @@ const rp = require('request-promise');
 const scrapeHelper = require('./helpers/scrapeHelper.js');
 const mathHelper = require('./formatHelpers/mathHelper');
 const fs = require('fs');
+// Use url to call scraper for local testing
+// const etsAesoUrl = 'http://ets.aeso.ca/ets_web/ip/Market/Reports/CSDReportServlet';
+
 /**
  * Create JSON of summary table from ets AESO live data
  * @param {string} scrapeUrl
@@ -35,7 +38,7 @@ function liveDataSummaryToJSON(scrapeUrl) {
  * @param {*} saveBool if true saves a JSON file of the data to server/data
  * @return {object} JSON data
  */
-module.exports.sendDataToServer = function(etsAesoUrl, saveBool) {
+module.exports.sendDataToServer = (etsAesoUrl, saveBool) => {
   if (saveBool === true) {
     liveDataSummaryToJSON(etsAesoUrl).then(function(data) {
       fs.writeFile(`./server/data/${data.TIME}.json`, JSON.stringify(data), function(err) {

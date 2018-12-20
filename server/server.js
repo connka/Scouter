@@ -25,12 +25,12 @@ function insertToDb(data, db) {
 }
 
 const getLastInsert = async (db, N) => {
-  let outArr = []
-  await db.collection('test').find().sort({ $natural: -1 }).limit(N).forEach(queryResults => {
-    outArr.push(queryResults)
-  })
-  return outArr
-}
+  const outArr = [];
+  await db.collection('test').find().sort({$natural: -1}).limit(N).forEach((queryResults) => {
+    outArr.push(queryResults);
+  });
+  return outArr;
+};
 // URL for mongoDB server
 const url = process.env.MONGODB_URI;
 // Name of mongoDB server
@@ -62,7 +62,7 @@ module.exports.getMostRecentData = async () => {
     client = await MongoClient.connect(url);
     console.log('Connected correctly to server');
     const db = client.db(dbName);
-    out = await getLastInsert(db, 1)
+    out = await getLastInsert(db, 1);
   } catch (err) {
     console.log(err.stack);
   }

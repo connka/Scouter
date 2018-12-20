@@ -25,13 +25,11 @@ class App extends Component {
 
   render() {
     return (
-      <>
-      <p>{this.state.response}</p>
-      <BreakdownContainer coalData={this.state.response} />
-      </>
+      <div>
+        <p>{this.state.response}</p>
+      </div>
     );
   }
 }
 
 export default App;
-// <p>{this.state.response}</p>

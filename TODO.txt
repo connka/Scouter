@@ -1,6 +1,10 @@
 Refactor List
-  1. reformat all logic pertaining to the scraped data into ets_aeso_assets
-  2. Readability
+  1. Fix dependencies for group members (fixed, but more testing required)
+    - complete step 2 before in depth testing as both package.jsons will function independantly
+  2. Split client and server compleatly, have server function as an event driven data source
+    - look at how to implement function call on the hour every hour
+  3. reformat all logic pertaining to the scraped data into ets_aeso_assets
+  4. Readability
     -controller/
       *formatHelpers/
     -ets_aeso_assets/
@@ -10,7 +14,7 @@ Refactor List
       *data/
       lib/
     -express_server.js
-  3. Functionality/Solutions
+  5. Functionality/Solutions
     -controller/
       *formatHelpers/
     -ets_aeso_assets/
@@ -20,7 +24,7 @@ Refactor List
       *data/
       lib/
     -express_server.js
-  4. Organization/Dead code
+  6. Organization/Dead code
     -controller/
       *formatHelpers/
     -ets_aeso_assets/
@@ -30,7 +34,7 @@ Refactor List
       *data/
       lib/
     -express_server.js
-  5. Testing
+  7. Testing
     -controller/
       *formatHelpers/
     -ets_aeso_assets/
@@ -40,3 +44,4 @@ Refactor List
       *data/
       lib/
     -express_server.js
+  8. Look at predicting next node during tree traversal
