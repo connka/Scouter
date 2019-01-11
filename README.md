@@ -50,4 +50,4 @@ scouterAlpha.azurewebsites.net
 
 !["Screenshot of Sunburst graph and map"](client/public/images/PS-sunburst-map.png)
 
-!["Screenshot of powerplant modal"](client/public/images/PS-modal.png)
+!["Screenshot of powerplant modal"](client/public/images/PS-modal.png)   
